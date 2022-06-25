@@ -32,16 +32,13 @@ class ProductDescription extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(right: getProportionateScreenWidth(30)),
             child: Text(product.description,
+                maxLines: 8,
                 style: TextStyle(
                   fontSize: getProportionateScreenHeight(15),
                 )),
           ),
           SizedBox(height: getProportionateScreenHeight(8)),
-          GestureDetector(
-            onTap: () {},
-            child: Text('See More Detail >',
-                style: TextStyle(fontSize: getProportionateScreenHeight(15), color: Colors.deepOrangeAccent)),
-          ),
+          
         ],
       ),
     );

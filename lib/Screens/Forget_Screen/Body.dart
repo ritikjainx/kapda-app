@@ -67,25 +67,25 @@ class _BodyState extends State<Body> {
           print(email);
         },
         validator: (value) {
-          if (value.isEmpty && !errors.contains(kemailNullEroor)) {
+          if (value.isEmpty && !errors.contains(kPhoneNoNullEroor)) {
             setState(() {
-              errors.add(kemailNullEroor);
+              errors.add(kPhoneNoNullEroor);
             });
-          } else if (!kemailValidatorRegExp.hasMatch(value) && !errors.contains(kinvalidEmailEroor)) {
+          } else if (!kemailValidatorRegExp.hasMatch(value) && !errors.contains(kinvalidPhoneNoError)) {
             setState(() {
-              errors.add(kinvalidEmailEroor);
+              errors.add(kinvalidPhoneNoError);
             });
           }
           return null;
         },
         onChanged: (value) {
-          if (value.isNotEmpty && errors.contains(kemailNullEroor)) {
+          if (value.isNotEmpty && errors.contains(kPhoneNoNullEroor)) {
             setState(() {
-              errors.remove(kemailNullEroor);
+              errors.remove(kPhoneNoNullEroor);
             });
-          } else if (kemailValidatorRegExp.hasMatch(value) && errors.contains(kinvalidEmailEroor)) {
+          } else if (kemailValidatorRegExp.hasMatch(value) && errors.contains(kinvalidPhoneNoError)) {
             setState(() {
-              errors.remove(kinvalidEmailEroor);
+              errors.remove(kinvalidPhoneNoError);
             });
           }
           return null;

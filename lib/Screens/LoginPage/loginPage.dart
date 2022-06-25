@@ -5,12 +5,6 @@ class LoginPage extends StatelessWidget {
   static const routename = '/loginpage';
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Sign In',
-          ),
-        ),
-        body: Body());
+    return Scaffold(body: Body());
   }
 }

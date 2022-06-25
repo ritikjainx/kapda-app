@@ -16,17 +16,17 @@ class _BodyState extends State<Body> {
   bool rememberMe = false;
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-        child: Padding(
+    return Padding(
       padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SizedBox(
             width: double.infinity,
             height: getProportionateScreenHeight(40),
           ),
           Text(
-            'Welcome Back',
+            'Welcome',
             style:
                 TextStyle(color: Colors.black, fontSize: getProportionateScreenWidth(30), fontWeight: FontWeight.bold),
           ),
@@ -34,7 +34,7 @@ class _BodyState extends State<Body> {
             height: getProportionateScreenHeight(30),
           ),
           Text(
-            'Sign in with email Id and Password \n or continue with Social Media ',
+            'Sign in with your registered mobile number ',
             textAlign: TextAlign.center,
           ),
           SizedBox(
@@ -53,41 +53,14 @@ class _BodyState extends State<Body> {
                 activeColor: kPrimaryColor,
               ),
               Text('Remember Me'),
-              Spacer(),
-              GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, ForgetScreen.routeName);
-                },
-                child: Text(
-                  'Forget Password',
-                  style: TextStyle(decoration: TextDecoration.underline),
-                ),
-              )
             ],
           ),
           SizedBox(
-            height: getProportionateScreenHeight(60),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SocialMediaIcon(
-                icon: 'assets/icons/google-icon.svg',
-              ),
-              SocialMediaIcon(
-                icon: 'assets/icons/facebook-2.svg',
-              ),
-              SocialMediaIcon(
-                icon: 'assets/icons/twitter.svg',
-              ),
-            ],
-          ),
-          SizedBox(
-            height: getProportionateScreenHeight(20),
+            height: getProportionateScreenHeight(50),
           ),
           NoAccountSignup()
         ],
       ),
-    ));
+    );
   }
 }

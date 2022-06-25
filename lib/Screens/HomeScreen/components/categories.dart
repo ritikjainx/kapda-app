@@ -6,8 +6,8 @@ import '../../../sizeConfig.dart';
 class Categories extends StatelessWidget {
   final List<Map> categories = [
     {'icon': 'assets/icons/Flash Icon.svg', 'Text': 'Flash \nDeals'},
-    {'icon': 'assets/icons/Bill Icon.svg', 'Text': 'Bills'},
-    {'icon': 'assets/icons/Game Icon.svg', 'Text': 'Games'},
+    {'icon': 'assets/icons/Game Icon.svg', 'Text': 'New \nArrivals'},
+    {'icon': 'assets/icons/Game Icon.svg', 'Text': 'Best \nSellers'},
     {'icon': 'assets/icons/Gift Icon.svg', 'Text': 'Today\'s \nDeal'},
     {'icon': 'assets/icons/Discover.svg', 'Text': 'Explore \nmore'}
   ];

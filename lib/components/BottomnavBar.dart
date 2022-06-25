@@ -4,7 +4,6 @@ import 'package:kapda/Screens/CartScreen/CartScreen.dart';
 import 'package:kapda/Screens/HomeScreen/homeScreen.dart';
 import 'package:kapda/Screens/profile/profile.dart';
 import 'package:kapda/sizeConfig.dart';
-
 import '../Menustate.dart';
 import '../constants.dart';
 
@@ -16,12 +15,11 @@ class BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 15),
+      padding: EdgeInsets.symmetric(vertical: 5),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)),
         boxShadow: [
-          BoxShadow(color: Color(0xffdadada).withOpacity(0.15), offset: Offset(0, -15), blurRadius: 20),
+          BoxShadow(color: Color(0xffdadada).withOpacity(0.25), offset: Offset(0, -15), blurRadius: 20),
         ],
       ),
       child: SafeArea(
@@ -35,6 +33,7 @@ class BottomNavBar extends StatelessWidget {
                   color: selected == MenuState.homepage ? kPrimaryColor : kTextColor.withOpacity(0.6),
                 ),
                 onPressed: () {
+                  if (ModalRoute.of(context).settings.name != HomeScreen.routeName)
                   Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
                 }),
             IconButton(

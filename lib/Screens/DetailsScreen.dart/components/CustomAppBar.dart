@@ -12,7 +12,7 @@ class CustomAppBar extends PreferredSize {
     return SafeArea(
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Padding(
-            padding: const EdgeInsets.only(left: 30),
+            padding: const EdgeInsets.only(left: 20),
             child: appBarIcon(
                 context: context,
                 onpress: () {
@@ -47,16 +47,18 @@ class CustomAppBar extends PreferredSize {
 
   Container appBarIcon({BuildContext context, IconData icon, Function onpress}) {
     return Container(
-        padding: EdgeInsets.symmetric(horizontal: 8),
-        height: getProportionateScreenHeight(40),
-        width: getProportionateScreenWidth(40),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(50),
+      height: getProportionateScreenHeight(40),
+      width: getProportionateScreenWidth(30),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(50),
+      ),
+      child: InkWell(
+        onTap: onpress,
+        child: Center(
+          child: Icon(icon),
         ),
-        child: IconButton(
-          icon: Icon(icon),
-          onPressed: onpress,
-        ));
+      ),
+    );
   }
 }

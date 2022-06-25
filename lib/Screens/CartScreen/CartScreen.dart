@@ -16,20 +16,19 @@ class CartScreen extends StatelessWidget {
         selected: MenuState.cart,
       ),
       appBar: AppBar(
-        title: Center(
-          child: Text.rich(
-              TextSpan(
-                text: 'Your Cart',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                children: [
-                  TextSpan(
-                    text: '\n ${context.read<CartProducts>().items.length} Items',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.normal),
-                  )
-                ],
-              ),
-              textAlign: TextAlign.center),
-        ),
+        title: Text.rich(
+            TextSpan(
+              text: 'Your Cart',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+              children: [
+                TextSpan(
+                  text: '\n ${context.read<CartProducts>().items.length} Items',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.normal, color: Colors.black),
+                )
+              ],
+            ),
+            textAlign: TextAlign.center),
+            
       ),
       body: Body(),
     );

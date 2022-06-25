@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kapda/Modals/Cartstuff.dart';
 import 'package:kapda/Modals/Product.dart';
+import 'package:kapda/Screens/DetailsScreen.dart/components/sizes_maker.dart';
 import 'package:kapda/components/DefaultButton.dart';
 import 'package:kapda/sizeConfig.dart';
 import '../../../services/cart_products.dart';
@@ -13,6 +14,7 @@ import 'package:provider/provider.dart';
 class Body extends StatelessWidget {
   final Product product;
   Body({this.product});
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -26,11 +28,12 @@ class Body extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 40, bottom: 10),
                 child: Text(
-                  'Choose Color',
+                  'Choose Size',
                   style: TextStyle(color: Colors.black, fontSize: getProportionateScreenHeight(15)),
                 ),
               ),
-              ColorDots(product: product),
+              // ColorDots(product: product.sizes),
+              SizeMaker(sizes: product.sizes),
             ],
           ),
           AddToCart(

@@ -14,8 +14,8 @@ const kPrimaryGradientColor = LinearGradient(
 );
 
 final RegExp kemailValidatorRegExp = RegExp(r'^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-z]+');
-const String kemailNullEroor = 'please enter Your Email';
-const String kinvalidEmailEroor = 'Email Id is invalid';
+const String kPhoneNoNullEroor = 'please enter Your phone Number';
+const String kinvalidPhoneNoError = 'Phone Number is invalid';
 const String kpassNullEroor = 'Please enter your password';
 const String kshortPassEroor = 'password is too short,use min 8 characters';
 const String kmatchPassEroor = 'password doesn\'t match';

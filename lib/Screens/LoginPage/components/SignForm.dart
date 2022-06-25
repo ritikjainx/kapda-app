@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:kapda/Screens/HomeScreen/homeScreen.dart';
-import 'package:kapda/components/CustomsvgImage.dart';
 import 'package:kapda/components/DefaultButton.dart';
 import 'package:kapda/components/formStateErrors.dart';
-
 import '../../../constants.dart';
 import '../../../sizeConfig.dart';
+import '../../OTP_Screen/OTPScreen.dart';
 
 class SignForm extends StatefulWidget {
   @override
@@ -15,38 +13,15 @@ class SignForm extends StatefulWidget {
 class _SignFormState extends State<SignForm> {
   final _formKey = GlobalKey<FormState>();
   List<String> errors = [];
-  String email;
+  String phoneNumber;
   String password;
-  bool showpass = true;
   @override
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
       child: Column(
         children: [
-          emailTextFormField(),
-          SizedBox(
-            height: getProportionateScreenHeight(20),
-          ),
-          passwordTextFormField(),
-          GestureDetector(
-            onTap: () {
-              print('pressed');
-              setState(() {
-                showpass = !showpass;
-              });
-            },
-            child: Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: Align(
-                alignment: Alignment.topRight,
-                child: Text(
-                  'Show Password',
-                  style: TextStyle(decoration: TextDecoration.underline, fontSize: getProportionateScreenHeight(10)),
-                ),
-              ),
-            ),
-          ),
+          phoneNumberFormField(),
           SizedBox(
             height: getProportionateScreenHeight(20),
           ),
@@ -55,11 +30,12 @@ class _SignFormState extends State<SignForm> {
             height: getProportionateScreenHeight(20),
           ),
           Defaultbutton(
-            text: 'continue',
+            text: 'Send OTP',
             onpressed: () {
               if (_formKey.currentState.validate() && errors.isEmpty) {
                 _formKey.currentState.save();
-                Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
+                Navigator.pushNamed(context, OTPscreen.routeName);
+                // Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
               }
             },
           ),
@@ -68,79 +44,37 @@ class _SignFormState extends State<SignForm> {
     );
   }
 
-  TextFormField emailTextFormField() {
+  TextFormField phoneNumberFormField() {
     return TextFormField(
         onSaved: (value) {
-          email = value;
-          print(email);
+          phoneNumber = value;
+          print(phoneNumber);
         },
         validator: (value) {
-          if (value.isEmpty && !errors.contains(kemailNullEroor)) {
-            setState(() {
-              errors.add(kemailNullEroor);
-            });
-          } else if (!kemailValidatorRegExp.hasMatch(value) &&
-              !errors.contains(kinvalidEmailEroor) &&
-              !errors.contains(kemailNullEroor)) {
-            setState(() {
-              errors.add(kinvalidEmailEroor);
-            });
+          if (value.isEmpty && !errors.contains(kPhoneNoNullEroor)) {
+            errors.add(kPhoneNoNullEroor);
+          } else if (value.length < 10 &&
+              !errors.contains(kPhoneNoNullEroor) &&
+              !errors.contains(kinvalidPhoneNoError)) {
+            errors.add(kinvalidPhoneNoError);
           }
+          setState(() {});
           return null;
         },
         onChanged: (value) {
-          if (value.isNotEmpty && errors.contains(kemailNullEroor)) {
-            setState(() {
-              errors.remove(kemailNullEroor);
-            });
-          } else if (kemailValidatorRegExp.hasMatch(value) && errors.contains(kinvalidEmailEroor)) {
-            setState(() {
-              errors.remove(kinvalidEmailEroor);
-            });
+          if (value.isNotEmpty && errors.contains(kPhoneNoNullEroor)) {
+            errors.remove(kPhoneNoNullEroor);
+          } else if (value.length == 10 && errors.contains(kinvalidPhoneNoError)) {
+            errors.remove(kinvalidPhoneNoError);
           }
+          setState(() {});
           return null;
         },
-        keyboardType: TextInputType.emailAddress,
+        keyboardType: TextInputType.phone,
+        maxLength: 10,
         decoration: InputDecoration(
-          hintText: 'Enter your email',
-          labelText: 'Email',
-          suffixIcon: SvgImage('assets/icons/Mail.svg'),
-        ));
-  }
-
-  TextFormField passwordTextFormField() {
-    return TextFormField(
-        onSaved: (value) => password = value,
-        validator: (value) {
-          if (value.isEmpty && !errors.contains(kpassNullEroor)) {
-            setState(() {
-              errors.add(kpassNullEroor);
-            });
-          } else if (value.length < 8 && !errors.contains(kshortPassEroor) && !errors.contains(kpassNullEroor)) {
-            setState(() {
-              errors.add(kshortPassEroor);
-            });
-          }
-          return null;
-        },
-        onChanged: (value) {
-          if (value.isNotEmpty && errors.contains(kpassNullEroor)) {
-            setState(() {
-              errors.remove(kpassNullEroor);
-            });
-          } else if (value.length >= 8 && errors.contains(kshortPassEroor)) {
-            setState(() {
-              errors.remove(kshortPassEroor);
-            });
-          }
-          return null;
-        },
-        obscureText: showpass,
-        keyboardType: TextInputType.emailAddress,
-        decoration: InputDecoration(
-          hintText: 'Enter your password',
-          labelText: 'Password',
-          suffixIcon: SvgImage('assets/icons/Lock.svg'),
+          hintText: 'Enter your phone number',
+          labelText: 'Phone number',
         ));
   }
 }

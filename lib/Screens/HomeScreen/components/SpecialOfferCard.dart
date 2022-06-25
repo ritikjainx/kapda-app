@@ -20,9 +20,11 @@ class SpecialOfferCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(30),
           child: Stack(
             children: [
-              Image.asset(
-                imagePath,
-                fit: BoxFit.fill,
+              Expanded(
+                child: Image.asset(
+                  imagePath,
+                  fit: BoxFit.fill,
+                ),
               ),
               Container(
                 decoration: BoxDecoration(

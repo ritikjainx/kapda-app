@@ -8,18 +8,24 @@ import 'package:kapda/sizeConfig.dart';
 class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Column(
-        children: [
-          Text('Complete Profile',
-              style: TextStyle(
-                  color: Colors.black, fontSize: getProportionateScreenHeight(30), fontWeight: FontWeight.bold)),
-          Gap(h: 20),
-          Text('Complete your details'),
-          Gap(h: 50),
-          Details(),
-        ],
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          children: [
+            Text('Register account',
+                style: TextStyle(
+                    color: Colors.black, fontSize: getProportionateScreenHeight(30), fontWeight: FontWeight.bold)),
+            Gap(h: 20),
+            Text(
+              'create your profile by providing few details',
+              maxLines: 2,
+              textAlign: TextAlign.center,
+            ),
+            Gap(h: 40),
+            Details(),
+          ],
+        ),
       ),
     );
   }
@@ -54,17 +60,17 @@ class _DetailsState extends State<Details> {
           Gap(h: 30),
           TextFormField(
             decoration: InputDecoration(
-                labelText: 'Phone Number',
-                hintText: 'Enter your phone number',
-                suffixIcon: SvgImage('assets/icons/Call.svg')),
-          ),
-          Gap(h: 30),
-          TextFormField(
-            decoration: InputDecoration(
               labelText: 'Address',
               hintText: 'Enter your address',
               suffixIcon: SvgImage('assets/icons/Discover.svg'),
             ),
+          ),
+          Gap(h: 30),
+          TextFormField(
+            decoration: InputDecoration(
+                labelText: 'Phone Number',
+                hintText: 'Enter your phone number',
+                suffixIcon: SvgImage('assets/icons/Call.svg')),
           ),
           Gap(h: 30),
           Defaultbutton(
@@ -72,12 +78,6 @@ class _DetailsState extends State<Details> {
             onpressed: () {
               Navigator.pushNamed(context, OTPscreen.routeName);
             },
-          ),
-          Gap(h: 20),
-          Text(
-            'Note - you can skip this for now , Just click on create profile and move on to next screen',
-            style: TextStyle(color: Colors.deepOrange),
-            textAlign: TextAlign.center,
           ),
         ],
       ),

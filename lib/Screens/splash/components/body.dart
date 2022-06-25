@@ -14,7 +14,7 @@ class Body extends StatefulWidget {
 
 class _BodyState extends State<Body> {
   List<Map> splashpages = [
-    {'text': 'One stop solution for your daily needs', 'image': 'assets/images/splash_1.png'},
+    {'text': 'One stop solution for your clothing needs', 'image': 'assets/images/splash_1.png'},
     {
       'text': 'Best quality goods available from reputed brands \n Delivered right at your doorstep',
       'image': 'assets/images/splash_2.png'
@@ -38,7 +38,6 @@ class _BodyState extends State<Body> {
                   setState(() {
                     currentPage = value;
                   });
-                  // print(value);
                 },
                 itemCount: splashpages.length,
                 itemBuilder: (context, int) {
@@ -48,6 +47,9 @@ class _BodyState extends State<Body> {
                   );
                 },
               ),
+            ),
+            SizedBox(
+              height: 10,
             ),
             Expanded(
                 flex: 2,

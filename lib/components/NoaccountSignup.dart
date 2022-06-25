@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kapda/Screens/SignUp_screen/signupscreen.dart';
 import 'package:kapda/sizeConfig.dart';
-
+import '../Screens/ProfilePage/profilePage.dart';
 import '../constants.dart';
 
 class NoAccountSignup extends StatelessWidget {
@@ -16,7 +15,7 @@ class NoAccountSignup extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            Navigator.popAndPushNamed(context, SignUp.routeName);
+            Navigator.pushNamed(context, ProfilePage.routeName);
           },
           child: Text(
             'Sign UP',

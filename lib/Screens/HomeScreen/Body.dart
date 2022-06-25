@@ -8,7 +8,6 @@ import 'components/SectionBreak.dart';
 import 'components/SpecialOfferCard.dart';
 import 'components/categories.dart';
 import 'components/productCard.dart';
-import 'components/topbar.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -21,14 +20,12 @@ class Body extends StatelessWidget {
           // mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Topbar(),
-            Gap(h: 20),
             Discountcard(),
             SizedBox(height: getProportionateScreenHeight(25)),
             Categories(),
             SizedBox(height: getProportionateScreenHeight(15)),
             SectionBreakTitle(
-              text: 'Special Offers for You',
+              text: 'shop by catogory',
               onpress: () {},
             ),
             SizedBox(height: getProportionateScreenHeight(15)),
@@ -38,16 +35,16 @@ class Body extends StatelessWidget {
                 // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SpecialOfferCard(
-                    imagePath: 'assets/images/Image Banner 2.png',
-                    categoryTitle: 'Smartphone',
+                    imagePath: 'assets/images/mens_colection.jpeg',
+                    categoryTitle: 'Male',
                     onpress: () {
-                      print('preseed');
+                      print('pressed');
                     },
                   ),
                   SizedBox(width: getProportionateScreenWidth(15)),
                   SpecialOfferCard(
-                    imagePath: 'assets/images/Image Banner 3.png',
-                    categoryTitle: 'Fashion',
+                    imagePath: 'assets/images/women_collection1.jpeg',
+                    categoryTitle: 'Female',
                     onpress: () {
                       print('preseed');
                     },
@@ -57,7 +54,7 @@ class Body extends StatelessWidget {
             ),
             Gap(h: 20),
             SectionBreakTitle(
-              text: 'Popular Products',
+              text: 'Trending',
               onpress: () {},
             ),
             Gap(h: 20),

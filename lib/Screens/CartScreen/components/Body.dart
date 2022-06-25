@@ -17,35 +17,39 @@ class _BodyState extends State<Body> {
     return Column(children: [
       Expanded(
         child: Consumer<CartProducts>(builder: (context, cartproducts, child) {
-          return ListView.builder(
-              itemCount: cartproducts.items.length,
-              itemBuilder: (context, index) {
-                final productdetails = cartproducts.items;
-                return Dismissible(
-                  key: Key(productdetails[index].id.toString()),
-                  child: ProductCard(productdetails: productdetails[index]),
-                  direction: DismissDirection.endToStart,
-                  onDismissed: (direction) {
-                    setState(() {
-                      cartproducts.removeproduct(index);
-                    });
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Item removed from cart')));
-                  },
-                  background: Container(
-                    padding: EdgeInsets.only(right: getProportionateScreenWidth(20)),
-                    color: Color(0xffffe6e6),
-                    child: Row(
-                      children: [
-                        Spacer(),
-                        SvgPicture.asset(
-                          'assets/icons/Trash.svg',
-                          height: getProportionateScreenHeight(20),
+          return cartproducts.items.length == 0
+              ? Center(
+                  child: Text("No items added in cart"),
+                )
+              : ListView.builder(
+                  itemCount: cartproducts.items.length,
+                  itemBuilder: (context, index) {
+                    final productdetails = cartproducts.items;
+                    return Dismissible(
+                      key: Key(productdetails[index].id.toString()),
+                      child: ProductCard(productdetails: productdetails[index]),
+                      direction: DismissDirection.endToStart,
+                      onDismissed: (direction) {
+                        setState(() {
+                          cartproducts.removeproduct(index);
+                        });
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Item removed from cart')));
+                      },
+                      background: Container(
+                        padding: EdgeInsets.only(right: getProportionateScreenWidth(20)),
+                        color: Color(0xffffe6e6),
+                        child: Row(
+                          children: [
+                            Spacer(),
+                            SvgPicture.asset(
+                              'assets/icons/Trash.svg',
+                              height: getProportionateScreenHeight(20),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
-                );
-              });
+                      ),
+                    );
+                  });
         }),
       ),
       CheckOutBar(),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../Constants.dart';
 import '../../../sizeConfig.dart';
 
@@ -14,7 +13,7 @@ class SplashContent extends StatelessWidget {
       children: [
         Spacer(),
         Text(
-          'Needs',
+          'Kapda',
           style:
               TextStyle(color: kPrimaryColor, fontSize: getProportionateScreenHeight(36), fontWeight: FontWeight.bold),
         ),
