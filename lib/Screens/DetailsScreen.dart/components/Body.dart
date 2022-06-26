@@ -6,7 +6,6 @@ import 'package:kapda/components/DefaultButton.dart';
 import 'package:kapda/sizeConfig.dart';
 import '../../../services/cart_products.dart';
 import 'Button.dart';
-import 'ColorDots.dart';
 import 'ProductImage.dart';
 import 'Productdecription.dart';
 import 'package:provider/provider.dart';

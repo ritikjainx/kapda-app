@@ -76,7 +76,8 @@ class _DetailsState extends State<Details> {
           Defaultbutton(
             text: 'Create Profile',
             onpressed: () {
-              Navigator.pushNamed(context, OTPscreen.routeName);
+              // Navigator.pushNamed(context, OTPscreen.routeName);
+              
             },
           ),
         ],
