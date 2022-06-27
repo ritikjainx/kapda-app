@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../../components/BottomnavBar.dart';
 import '../../Menustate.dart';
 import '../../services/cart_products.dart';
+import '../../sizeConfig.dart';
 import '../CartScreen/CartScreen.dart';
 import 'body.dart';
 
@@ -11,6 +12,8 @@ class HomeScreen extends StatelessWidget {
   static const routeName = '/HomeScreen';
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
+
     return Scaffold(
       bottomNavigationBar: BottomNavBar(
         selected: MenuState.homepage,

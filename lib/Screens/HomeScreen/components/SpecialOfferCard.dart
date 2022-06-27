@@ -14,17 +14,15 @@ class SpecialOfferCard extends StatelessWidget {
     return GestureDetector(
       onTap: onpress,
       child: SizedBox(
-        height: getProportionateScreenHeight(100),
+        height: getProportionateScreenHeight(80),
         width: getProportionateScreenWidth(240),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(30),
           child: Stack(
             children: [
-              Expanded(
-                child: Image.asset(
-                  imagePath,
-                  fit: BoxFit.fill,
-                ),
+              Image.asset(
+                imagePath,
+                fit: BoxFit.fill,
               ),
               Container(
                 decoration: BoxDecoration(

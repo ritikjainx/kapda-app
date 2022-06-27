@@ -10,20 +10,23 @@ class SectionBreakTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(
-          text,
-          style: TextStyle(fontSize: getProportionateScreenWidth(18), color: Colors.black),
-        ),
-        Spacer(),
-        GestureDetector(
-            onTap: onpress,
-            child: Text(
-              'See More',
-              style: TextStyle(color: Colors.grey.shade500),
-            )),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 5),
+      child: Row(
+        children: [
+          Text(
+            text,
+            style: TextStyle(fontSize: getProportionateScreenWidth(18), color: Colors.black),
+          ),
+          Spacer(),
+          GestureDetector(
+              onTap: onpress,
+              child: Text(
+                'See More',
+                style: TextStyle(color: Colors.grey.shade500),
+              )),
+        ],
+      ),
     );
   }
 }

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "273423698471",
+    "project_id": "kapdax-app",
+    "storage_bucket": "kapdax-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:273423698471:android:0b9e765517d047527b5c02",
+        "android_client_info": {
+          "package_name": "com.example.kapda"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "273423698471-op1pdj52sa0e5htatfmscfpgh4fbc4vu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZCsplL25PZN2TBUU6CegadP5USUuMR1I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "273423698471-op1pdj52sa0e5htatfmscfpgh4fbc4vu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
