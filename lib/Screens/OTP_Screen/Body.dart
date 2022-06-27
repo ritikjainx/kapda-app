@@ -7,6 +7,7 @@ import 'package:kapda/services/auth_provider.dart';
 import 'package:kapda/sizeConfig.dart';
 import 'package:provider/provider.dart';
 
+import '../../services/product_service.dart';
 import '../HomeScreen/homeScreen.dart';
 
 class Body extends StatefulWidget {
@@ -57,7 +58,7 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     return Consumer<AuthProvider>(builder: (context, authProvider, child) {
       return Padding(
-        padding: EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20.0),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -73,14 +74,14 @@ class _BodyState extends State<Body> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('the code will expire in '),
+                  const Text('the code will expire in '),
                   TweenAnimationBuilder(
                       tween: Tween(begin: 60.0, end: 0),
-                      duration: Duration(seconds: 60),
+                      duration: const Duration(seconds: 60),
                       builder: (_, value, __) {
                         return Text(
                           '0:${value.toInt()}',
-                          style: TextStyle(color: kPrimaryColor),
+                          style: const TextStyle(color: kPrimaryColor),
                         );
                       }),
                 ],
@@ -99,19 +100,20 @@ class _BodyState extends State<Body> {
                     print(auth.user.uid);
                     await authProvider.saveUserToDataBase();
                     authProvider.errorText = "";
+                    await Provider.of<ProductsService>(context, listen: false).getallProducts();
                     Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
                   } catch (e) {
                     authProvider.errorText = e.toString();
                   }
                 },
               ),
-              Gap(
+              const Gap(
                 h: 10,
               ),
               if (authProvider.errorText.isNotEmpty)
                 Text(
                   authProvider.errorText,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.red,
                     fontSize: 12,
                   ),

@@ -19,11 +19,11 @@ class GSheetsApi {
 
   static final _gsheets = GSheets(_cred);
   static Worksheet _userSheet;
+  static Spreadsheet _spreadsheet;
 
   static Future init() async {
-    final Spreadsheet _spreadsheet = await _gsheets.spreadsheet(_spreadsheetid);
-    _userSheet = await _getWorkSheet(_spreadsheet, title: 'Users');
-    print(_userSheet);
+    _spreadsheet = await _gsheets.spreadsheet(_spreadsheetid);
+    print(_spreadsheet);
   }
 
   static Future<Worksheet> _getWorkSheet(Spreadsheet spreadsheet, {String title}) async {
@@ -36,11 +36,27 @@ class GSheetsApi {
   }
 
   static Future insert(Map<String, dynamic> userData) async {
+    _userSheet = await _getWorkSheet(_spreadsheet, title: 'Users');
     if (_userSheet == null) {
       print('null');
       return;
     }
     await _userSheet.values.map.appendRow(userData);
     print('added');
+  }
+
+  static Future getAllProducts() async {
+    _userSheet = _spreadsheet.worksheetByTitle("Products");
+    if (_userSheet == null) {
+      print('null');
+      return;
+    }
+    return await _userSheet.values.map.allRows();
+  }
+
+  static updateProductbyKey({String id, String key, String value}) {
+    _userSheet = _spreadsheet.worksheetByTitle("Products");
+
+    _userSheet.values.insertValueByKeys(value, columnKey: key, rowKey: id);
   }
 }

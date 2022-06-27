@@ -18,7 +18,7 @@ class SectionBreakTitle extends StatelessWidget {
             text,
             style: TextStyle(fontSize: getProportionateScreenWidth(18), color: Colors.black),
           ),
-          Spacer(),
+          const Spacer(),
           GestureDetector(
               onTap: onpress,
               child: Text(

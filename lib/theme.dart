@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'constants.dart';
 
 ThemeData themeData() {
-  var textTheme = TextTheme(bodyText1: TextStyle(color: kTextColor), bodyText2: TextStyle(color: kTextColor));
+  var textTheme = const TextTheme(bodyText1: TextStyle(color: kTextColor), bodyText2: TextStyle(color: kTextColor));
 
   return ThemeData(
     inputDecorationTheme: inputDecorationTheme(),
@@ -14,20 +15,18 @@ ThemeData themeData() {
   );
 }
 
-AppBarTheme appBarTheme = AppBarTheme(
+AppBarTheme appBarTheme =  AppBarTheme(
   backgroundColor: Colors.white,
   elevation: 0,
-  iconTheme: IconThemeData(color: Colors.black),
-  textTheme: TextTheme(headline6: TextStyle(color: Color(0xff8d8d8d), fontSize: 18)),
-  brightness: Brightness.light,
+  iconTheme: IconThemeData(color: Colors.black), toolbarTextStyle: TextTheme(headline6: TextStyle(color: Color(0xff8d8d8d), fontSize: 18)).bodyText2, titleTextStyle: TextTheme(headline6: TextStyle(color: Color(0xff8d8d8d), fontSize: 18)).headline6, systemOverlayStyle: SystemUiOverlayStyle.dark,
 );
 
 InputDecorationTheme inputDecorationTheme() {
   var outlineInputBorder = OutlineInputBorder(
-      borderRadius: BorderRadius.circular(30), gapPadding: 10, borderSide: BorderSide(color: kTextColor));
+      borderRadius: BorderRadius.circular(30), gapPadding: 10, borderSide: const BorderSide(color: kTextColor));
   return InputDecorationTheme(
-      labelStyle: TextStyle(color: kTextColor),
-      contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 20),
+      labelStyle: const TextStyle(color: kTextColor),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 42, vertical: 20),
       floatingLabelBehavior: FloatingLabelBehavior.always,
       enabledBorder: outlineInputBorder,
       focusedBorder: outlineInputBorder,

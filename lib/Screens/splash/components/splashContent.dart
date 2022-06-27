@@ -5,13 +5,13 @@ import '../../../sizeConfig.dart';
 class SplashContent extends StatelessWidget {
   final String text;
   final String image;
-  SplashContent({this.text, this.image});
+  const SplashContent({this.text, this.image});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Spacer(),
+        const Spacer(),
         Text(
           'Kapda',
           style:
@@ -21,7 +21,7 @@ class SplashContent extends StatelessWidget {
           text,
           textAlign: TextAlign.center,
         ),
-        Spacer(),
+        const Spacer(),
         Image.asset(
           image,
           height: getProportionateScreenHeight(265),

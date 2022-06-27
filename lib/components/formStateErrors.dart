@@ -6,7 +6,7 @@ import '../sizeConfig.dart';
 class FormStateError extends StatelessWidget {
   final List<String> errors;
 
-  FormStateError({this.errors});
+  const FormStateError({this.errors});
 
   @override
   Widget build(BuildContext context) {

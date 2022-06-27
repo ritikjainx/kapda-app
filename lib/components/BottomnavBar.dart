@@ -15,11 +15,11 @@ class BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 5),
+      padding: const EdgeInsets.symmetric(vertical: 5),
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
-          BoxShadow(color: Color(0xffdadada).withOpacity(0.25), offset: Offset(0, -15), blurRadius: 20),
+          BoxShadow(color: const Color(0xffdadada).withOpacity(0.25), offset: const Offset(0, -15), blurRadius: 20),
         ],
       ),
       child: SafeArea(
@@ -33,8 +33,9 @@ class BottomNavBar extends StatelessWidget {
                   color: selected == MenuState.homepage ? kPrimaryColor : kTextColor.withOpacity(0.6),
                 ),
                 onPressed: () {
-                  if (ModalRoute.of(context).settings.name != HomeScreen.routeName)
-                  Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
+                  if (ModalRoute.of(context).settings.name != HomeScreen.routeName) {
+                    Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
+                  }
                 }),
             IconButton(
                 icon: SvgPicture.asset(
@@ -50,9 +51,10 @@ class BottomNavBar extends StatelessWidget {
                   color: selected == MenuState.cart ? kPrimaryColor : kTextColor.withOpacity(0.6),
                 ),
                 onPressed: () {
-                  if (ModalRoute.of(context).settings.name != CartScreen.routeName)
+                  if (ModalRoute.of(context).settings.name != CartScreen.routeName) {
                     Navigator.pushNamedAndRemoveUntil(
                         context, CartScreen.routeName, ModalRoute.withName(HomeScreen.routeName));
+                  }
                 }),
             IconButton(
                 icon: SvgPicture.asset(
@@ -61,9 +63,10 @@ class BottomNavBar extends StatelessWidget {
                   color: selected == MenuState.profile ? kPrimaryColor : kTextColor.withOpacity(0.6),
                 ),
                 onPressed: () {
-                  if (ModalRoute.of(context).settings.name != Profile.routeName)
+                  if (ModalRoute.of(context).settings.name != Profile.routeName) {
                     Navigator.pushNamedAndRemoveUntil(
                         context, Profile.routeName, ModalRoute.withName(HomeScreen.routeName));
+                  }
                 }),
           ],
         ),

@@ -6,7 +6,7 @@ import '../sizeConfig.dart';
 
 class SvgImage extends StatelessWidget {
   final String svgPath;
-  SvgImage(this.svgPath);
+  const SvgImage(this.svgPath);
 
   @override
   Widget build(BuildContext context) {

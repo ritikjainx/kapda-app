@@ -1,14 +1,11 @@
-import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:kapda/Modals/ApiModels/user_modal.dart' as userModal;
 import 'package:kapda/components/CustomsvgImage.dart';
 import 'package:kapda/components/DefaultButton.dart';
 import 'package:kapda/components/Gap.dart';
 import 'package:kapda/services/auth_provider.dart';
-import 'package:kapda/services/gsheets.dart';
 import 'package:kapda/sizeConfig.dart';
 import 'package:provider/provider.dart';
 
@@ -23,13 +20,13 @@ class Body extends StatelessWidget {
             Text('Register account',
                 style: TextStyle(
                     color: Colors.black, fontSize: getProportionateScreenHeight(30), fontWeight: FontWeight.bold)),
-            Gap(h: 20),
-            Text(
+            const Gap(h: 20),
+            const Text(
               'create your profile by providing few details',
               maxLines: 2,
               textAlign: TextAlign.center,
             ),
-            Gap(h: 40),
+            const Gap(h: 40),
             Details(),
           ],
         ),
@@ -67,7 +64,7 @@ class _DetailsState extends State<Details> {
         children: [
           TextFormField(
             controller: _firstNameEditingController,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
                 labelText: 'First Name',
                 hintText: 'Enter your First Name',
                 suffixIcon: SvgImage('assets/icons/User.svg')),
@@ -77,10 +74,10 @@ class _DetailsState extends State<Details> {
               }
             },
           ),
-          Gap(h: 30),
+          const Gap(h: 30),
           TextFormField(
             controller: _lastNameEditingController,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
                 labelText: 'Last Name',
                 hintText: 'Enter your Last Name',
                 suffixIcon: SvgImage('assets/icons/User.svg')),
@@ -90,10 +87,10 @@ class _DetailsState extends State<Details> {
               }
             },
           ),
-          Gap(h: 30),
+          const Gap(h: 30),
           TextFormField(
             controller: _addressEditingController,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'Address',
               hintText: 'Enter your address',
               suffixIcon: SvgImage('assets/icons/Discover.svg'),
@@ -104,10 +101,10 @@ class _DetailsState extends State<Details> {
               }
             },
           ),
-          Gap(h: 30),
+          const Gap(h: 30),
           TextFormField(
             controller: _phoneNumberEditingController,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
                 labelText: 'Phone Number',
                 hintText: 'Enter your phone number',
                 suffixIcon: SvgImage('assets/icons/Call.svg')),
@@ -120,7 +117,7 @@ class _DetailsState extends State<Details> {
               }
             },
           ),
-          Gap(h: 30),
+          const Gap(h: 30),
           Defaultbutton(
             text: 'Create Profile',
             onpressed: () async {
@@ -140,13 +137,13 @@ class _DetailsState extends State<Details> {
               }
             },
           ),
-          Gap(
+          const Gap(
             h: 10,
           ),
           if (Provider.of<AuthProvider>(context).errorText.isNotEmpty)
             Text(
               Provider.of<AuthProvider>(context).errorText,
-              style: TextStyle(color: Colors.red, fontSize: 12),
+              style: const TextStyle(color: Colors.red, fontSize: 12),
               maxLines: 4,
             )
         ],

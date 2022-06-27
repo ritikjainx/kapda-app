@@ -12,18 +12,18 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      bottomNavigationBar: BottomNavBar(
+      bottomNavigationBar: const BottomNavBar(
         selected: MenuState.cart,
       ),
       appBar: AppBar(
         title: Text.rich(
             TextSpan(
               text: 'Your Cart',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
               children: [
                 TextSpan(
                   text: '\n ${context.read<CartProducts>().items.length} Items',
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.normal, color: Colors.black),
+                  style: const TextStyle(fontSize: 15, fontWeight: FontWeight.normal, color: Colors.black),
                 )
               ],
             ),

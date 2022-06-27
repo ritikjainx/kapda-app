@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../sizeConfig.dart';
 import 'body.dart';
 
 class CreateProfilePage extends StatelessWidget {
@@ -9,7 +8,7 @@ class CreateProfilePage extends StatelessWidget {
     // SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sign Up'),
+        title: const Text('Sign Up'),
       ),
       body: Body(),
     );

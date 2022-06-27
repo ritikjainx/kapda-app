@@ -29,7 +29,7 @@ class SpecialOfferCard extends StatelessWidget {
                   gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                      colors: [Color(0xff343434).withOpacity(0.4), Color(0xff343434).withOpacity(0.2)]),
+                      colors: [const Color(0xff343434).withOpacity(0.4), const Color(0xff343434).withOpacity(0.2)]),
                 ),
               ),
               Padding(

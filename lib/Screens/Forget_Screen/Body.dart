@@ -30,7 +30,7 @@ class _BodyState extends State<Body> {
                 fontSize: getProportionateScreenWidth(30),
               )),
           SizedBox(height: getProportionateScreenHeight(10)),
-          Text(
+          const Text(
             'Please enter your email address\n we will send a link to reset your password',
             textAlign: TextAlign.center,
           ),
@@ -91,7 +91,7 @@ class _BodyState extends State<Body> {
           return null;
         },
         keyboardType: TextInputType.emailAddress,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           hintText: 'Enter your email',
           labelText: 'Email',
           suffixIcon: SvgImage('assets/icons/Mail.svg'),
