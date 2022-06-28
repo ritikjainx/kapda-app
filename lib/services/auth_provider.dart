@@ -1,5 +1,4 @@
 import 'dart:developer';
-import 'dart:io' show Platform;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kapda/Modals/ApiModels/user_modal.dart' as usermodal;
