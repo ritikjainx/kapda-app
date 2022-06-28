@@ -3,10 +3,10 @@ import 'package:kapda/Modals/Cartstuff.dart';
 import '../../../constants.dart';
 import '../../../sizeConfig.dart';
 
-class ProductCard extends StatelessWidget {
+class CartProductCard extends StatelessWidget {
   final CartStuff productdetails;
 
-  const ProductCard({Key key, this.productdetails}) : super(key: key);
+  const CartProductCard({Key key, this.productdetails}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +38,15 @@ class ProductCard extends StatelessWidget {
                   text: '\$ ${productdetails.price.toString()}',
                   style: TextStyle(color: kPrimaryColor, fontSize: getProportionateScreenHeight(15)),
                   children: [
-                    TextSpan(text: ' X ${productdetails.quantity.toString()}', style: const TextStyle(color: kTextColor))
+                    TextSpan(
+                        text: ' X ${productdetails.quantity.toString()}', style: const TextStyle(color: kTextColor))
                   ],
                 )),
+                Text(
+                  productdetails.size,
+                  maxLines: 1,
+                  style: TextStyle(fontSize: getProportionateScreenHeight(15)),
+                ),
               ],
             ),
           ),

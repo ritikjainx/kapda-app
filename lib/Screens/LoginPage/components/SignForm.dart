@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:kapda/components/DefaultButton.dart';
 import 'package:kapda/components/formStateErrors.dart';
+import 'package:provider/provider.dart';
+import '../../../components/Gap.dart';
 import '../../../constants.dart';
+import '../../../services/auth_provider.dart';
 import '../../../sizeConfig.dart';
-import '../../OTP_Screen/OTPScreen.dart';
-
 class SignForm extends StatefulWidget {
   @override
   _SignFormState createState() => _SignFormState();
@@ -12,9 +13,17 @@ class SignForm extends StatefulWidget {
 
 class _SignFormState extends State<SignForm> {
   final _formKey = GlobalKey<FormState>();
+  final _phoneEditingController = TextEditingController();
   List<String> errors = [];
   String phoneNumber;
   String password;
+
+  @override
+  void dispose() {
+    super.dispose();
+    _phoneEditingController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -31,14 +40,27 @@ class _SignFormState extends State<SignForm> {
           ),
           Defaultbutton(
             text: 'Send OTP',
-            onpressed: () {
+            onpressed: () async {
               if (_formKey.currentState.validate() && errors.isEmpty) {
                 _formKey.currentState.save();
-                Navigator.pushNamed(context, OTPscreen.routeName);
-                // Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
+                Provider.of<AuthProvider>(context, listen: false).updatePhoneNumber = _phoneEditingController.text;
+                bool exist = await Provider.of<AuthProvider>(context, listen: false).checkUser();
+                if (exist) {
+                  Provider.of<AuthProvider>(context, listen: false).updateErrorText("");
+                  await Provider.of<AuthProvider>(context, listen: false).sendOtpToPhone(context: context);
+                }
               }
             },
           ),
+          const Gap(
+            h: 10,
+          ),
+          if (Provider.of<AuthProvider>(context).errorText.isNotEmpty)
+            Text(
+              Provider.of<AuthProvider>(context).errorText,
+              style: const TextStyle(color: Colors.red, fontSize: 12),
+              maxLines: 4,
+            )
         ],
       ),
     );
@@ -46,6 +68,7 @@ class _SignFormState extends State<SignForm> {
 
   TextFormField phoneNumberFormField() {
     return TextFormField(
+        controller: _phoneEditingController,
         onSaved: (value) {
           phoneNumber = value;
           print(phoneNumber);

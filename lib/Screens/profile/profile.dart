@@ -16,6 +16,7 @@ class Profile extends StatelessWidget {
           "profile",
           style: TextStyle(color: Colors.black),
         ),
+        centerTitle: true,
       ),
       body: Body(),
       bottomNavigationBar: const BottomNavBar(

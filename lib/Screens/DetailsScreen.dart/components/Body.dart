@@ -10,17 +10,23 @@ import 'ProductImage.dart';
 import 'Productdecription.dart';
 import 'package:provider/provider.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
   final Product product;
   const Body({this.product});
 
+  @override
+  State<Body> createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  int selected = 0;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: [
-          ProductImage(product: product),
-          ProductDescription(product: product),
+          ProductImage(product: widget.product),
+          ProductDescription(product: widget.product),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -32,11 +38,20 @@ class Body extends StatelessWidget {
                 ),
               ),
               // ColorDots(product: product.sizes),
-              SizeMaker(sizes: product.sizes),
+              SizeMaker(
+                sizes: widget.product.sizes,
+                selected: selected,
+                onTap: (int index) {
+                  setState(() {
+                    selected = index;
+                  });
+                },
+              ),
             ],
           ),
           AddToCart(
-            product: product,
+            product: widget.product,
+            size: widget.product.sizes[selected],
           )
         ],
       ),
@@ -46,8 +61,8 @@ class Body extends StatelessWidget {
 
 class AddToCart extends StatefulWidget {
   final Product product;
-
-  const AddToCart({Key key, this.product}) : super(key: key);
+  final String size;
+  const AddToCart({Key key, this.product, this.size}) : super(key: key);
 
   @override
   _AddToCartState createState() => _AddToCartState();
@@ -97,28 +112,32 @@ class _AddToCartState extends State<AddToCart> {
                 text: 'Add To Cart',
                 onpressed: () {
                   if (counter != 0) {
+                    final cartProvider = Provider.of<CartProducts>(context, listen: false);
                     // List<CartStuff> addedproductscopy = context.read<CartProducts>().items;
-                    List<CartStuff> addedproductscopy = Provider.of<CartProducts>(context, listen: false).items;
+                    List<CartStuff> addedproductscopy = cartProvider.items;
                     int count = 0;
                     int index;
                     for (int i = 0; i < addedproductscopy.length; i++) {
-                      if (addedproductscopy[i].id == widget.product.id) {
+                      if (addedproductscopy[i].id == widget.product.id && addedproductscopy[i].size == widget.size) {
                         count++;
                         index = i;
                       }
                     }
                     if (count == 1) {
-                      context.read<CartProducts>().counter(counter: counter, index: index);
+                      cartProvider.counter(counter: counter, index: index);
+                       ScaffoldMessenger.of(context).hideCurrentSnackBar();
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content: Text('$counter more ${widget.product.title} added to cart'),
                       ));
                     } else {
-                      context.read<CartProducts>().addproducts(widget.product.images, widget.product.price,
-                          widget.product.title, counter, widget.product.id);
+                      cartProvider.addproducts(widget.product.images, widget.product.price, widget.product.title,
+                          counter, widget.product.id, widget.size);
+                           ScaffoldMessenger.of(context).hideCurrentSnackBar();
                       ScaffoldMessenger.of(context)
                           .showSnackBar(SnackBar(content: Text('$counter ${widget.product.title} added to cart')));
                     }
                   } else {
+                     ScaffoldMessenger.of(context).hideCurrentSnackBar();
                     ScaffoldMessenger.of(context)
                         .showSnackBar(const SnackBar(content: Text('please select number of items to be added')));
                   }

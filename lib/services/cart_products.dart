@@ -6,8 +6,8 @@ class CartProducts extends ChangeNotifier {
 
   List get items =>_addedproduct;
 
-  void addproducts(String imagepath, double price, String title, int qty, int id) {
-    _addedproduct.add(CartStuff(image: imagepath, price: price, title: title, quantity: qty, id: id));
+  void addproducts(String imagepath, double price, String title, int qty, int id,String size) {
+    _addedproduct.add(CartStuff(image: imagepath, price: price, title: title, quantity: qty, id: id,size: size));
     notifyListeners();
   }
 

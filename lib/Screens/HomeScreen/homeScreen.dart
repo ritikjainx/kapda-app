@@ -10,6 +10,7 @@ import 'body.dart';
 
 class HomeScreen extends StatelessWidget {
   static const routeName = '/HomeScreen';
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -38,13 +39,13 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(
                   width: 5,
                 ),
-                context.read<CartProducts>().items.length == 1
+                context.watch<CartProducts>().items.length == 1
                     ? Text(
-                        "${context.read<CartProducts>().items.length} Item",
+                        "${context.watch<CartProducts>().items.length} Item",
                         style: const TextStyle(color: kTextColor),
                       )
                     : Text(
-                        "${context.read<CartProducts>().items.length} Items",
+                        "${context.watch<CartProducts>().items.length} Items",
                         style: const TextStyle(color: kTextColor),
                       ),
                 const SizedBox(

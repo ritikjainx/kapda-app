@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:kapda/Screens/CartScreen/CartScreen.dart';
 import 'package:kapda/Screens/HomeScreen/homeScreen.dart';
+import 'package:kapda/Screens/products_screen.dart';
 import 'package:kapda/Screens/profile/profile.dart';
 import 'package:kapda/sizeConfig.dart';
 import '../Menustate.dart';
@@ -43,7 +44,11 @@ class BottomNavBar extends StatelessWidget {
                   width: getProportionateScreenWidth(30),
                   color: selected == MenuState.favourite ? kPrimaryColor : kTextColor.withOpacity(0.6),
                 ),
-                onPressed: () {}),
+                onPressed: () {
+                  if (ModalRoute.of(context).settings.name != ProductsScreen.routeName) {
+                    Navigator.pushNamedAndRemoveUntil(context, ProductsScreen.routeName, (route) => false);
+                  }
+                }),
             IconButton(
                 icon: SvgPicture.asset(
                   'assets/icons/Cart Icon.svg',

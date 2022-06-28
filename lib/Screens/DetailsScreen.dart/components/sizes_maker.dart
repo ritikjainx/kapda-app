@@ -1,30 +1,23 @@
 import 'package:flutter/material.dart';
-
 import '../../../sizeConfig.dart';
 
-class SizeMaker extends StatefulWidget {
-  const SizeMaker({Key key, this.sizes}) : super(key: key);
+class SizeMaker extends StatelessWidget {
+  const SizeMaker({Key key, this.sizes, this.onTap, this.selected}) : super(key: key);
 
   final List<String> sizes;
+  final Function onTap;
+  final int selected;
 
-  @override
-  _SizeMakerState createState() => _SizeMakerState();
-}
-
-class _SizeMakerState extends State<SizeMaker> {
-  int selected = 0;
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: List.generate(widget.sizes.length, (index) => size(index)),
+      children: List.generate(sizes.length, (index) => size(index)),
     );
   }
 
   GestureDetector size(int index) => GestureDetector(
         onTap: () {
-          setState(() {
-            selected = index;
-          });
+          onTap(index);
         },
         child: Container(
             margin: const EdgeInsets.only(left: 40),
@@ -36,7 +29,7 @@ class _SizeMakerState extends State<SizeMaker> {
               border: Border.all(color: selected == index ? Colors.deepOrangeAccent : Colors.transparent),
             ),
             child: Center(
-              child: Text(widget.sizes[index]),
+              child: Text(sizes[index]),
             )),
       );
 }
