@@ -6,8 +6,6 @@ import '../../../components/Gap.dart';
 import '../../../constants.dart';
 import '../../../services/auth_provider.dart';
 import '../../../sizeConfig.dart';
-import '../../OTP_Screen/OTPScreen.dart';
-
 class SignForm extends StatefulWidget {
   @override
   _SignFormState createState() => _SignFormState();
@@ -48,6 +46,7 @@ class _SignFormState extends State<SignForm> {
                 Provider.of<AuthProvider>(context, listen: false).updatePhoneNumber = _phoneEditingController.text;
                 bool exist = await Provider.of<AuthProvider>(context, listen: false).checkUser();
                 if (exist) {
+                  Provider.of<AuthProvider>(context, listen: false).updateErrorText("");
                   await Provider.of<AuthProvider>(context, listen: false).sendOtpToPhone(context: context);
                 }
               }

@@ -1,6 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:kapda/Modals/ApiModels/user_modal.dart' as userModal;
+import 'package:kapda/Modals/ApiModels/user_modal.dart' as usermodal;
 import 'package:kapda/components/CustomsvgImage.dart';
 import 'package:kapda/components/DefaultButton.dart';
 import 'package:kapda/components/Gap.dart';
@@ -8,6 +7,9 @@ import 'package:kapda/services/auth_provider.dart';
 import 'package:kapda/sizeConfig.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
+
+import '../../Constants.dart';
+import '../../services/shared_prefs.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -46,6 +48,13 @@ class _DetailsState extends State<Details> {
   final _lastNameEditingController = TextEditingController();
   final _addressEditingController = TextEditingController();
   final _phoneNumberEditingController = TextEditingController();
+  bool rememberMe;
+
+  @override
+  void initState() {
+    super.initState();
+    rememberMe = UserSharedPrefs.getToRemember() ?? false;
+  }
 
   @override
   void dispose() {
@@ -128,7 +137,7 @@ class _DetailsState extends State<Details> {
 
                 var uuid = Uuid();
                 String uid = uuid.v4();
-                final user = userModal.User(
+                final user = usermodal.User(
                   // id: FirebaseAuth.instance.currentUser.uid,
                   id: uid,
                   firstName: _firstNameEditingController.text,
@@ -149,7 +158,22 @@ class _DetailsState extends State<Details> {
               Provider.of<AuthProvider>(context).errorText,
               style: const TextStyle(color: Colors.red, fontSize: 12),
               maxLines: 4,
-            )
+            ),
+          Row(
+            children: [
+              Checkbox(
+                value: rememberMe,
+                onChanged: (checkvalue) async {
+                  setState(() {
+                    rememberMe = !rememberMe;
+                  });
+                  await UserSharedPrefs.setToRemember(rememberMe);
+                },
+                activeColor: kPrimaryColor,
+              ),
+              const Text('Remember Me'),
+            ],
+          ),
         ],
       ),
     );

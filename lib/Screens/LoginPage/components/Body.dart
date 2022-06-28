@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kapda/components/NoaccountSignup.dart';
 import 'package:kapda/constants.dart';
+import 'package:kapda/services/shared_prefs.dart';
 import 'package:kapda/sizeConfig.dart';
 
 import 'SignForm.dart';
@@ -44,10 +45,11 @@ class _BodyState extends State<Body> {
               children: [
                 Checkbox(
                   value: rememberMe,
-                  onChanged: (checkvalue) {
+                  onChanged: (checkvalue) async {
                     setState(() {
                       rememberMe = !rememberMe;
                     });
+                    await UserSharedPrefs.setToRemember(rememberMe);
                   },
                   activeColor: kPrimaryColor,
                 ),

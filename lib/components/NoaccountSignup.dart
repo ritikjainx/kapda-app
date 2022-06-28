@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:kapda/services/auth_provider.dart';
 import 'package:kapda/sizeConfig.dart';
+import 'package:provider/provider.dart';
 import '../Screens/CreateProfilePage/create_profile_page.dart';
 import '../constants.dart';
 
@@ -15,6 +17,7 @@ class NoAccountSignup extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
+            Provider.of<AuthProvider>(context, listen: false).updateErrorText('');
             Navigator.pushNamed(context, CreateProfilePage.routeName);
           },
           child: Text(

@@ -197,7 +197,8 @@ class _BodyState extends State<Body> {
         onChanged: onchanged,
         textAlign: TextAlign.center,
         style: const TextStyle(color: Colors.black, fontSize: 24),
-        decoration: kOTPinputdecoration,
+        decoration: kOTPinputdecoration.copyWith(counterText: ""),
+        maxLength: 1,
       ),
     );
   }

@@ -28,7 +28,7 @@ class CartScreen extends StatelessWidget {
               ],
             ),
             textAlign: TextAlign.center),
-            
+        centerTitle: true,
       ),
       body: Body(),
     );
