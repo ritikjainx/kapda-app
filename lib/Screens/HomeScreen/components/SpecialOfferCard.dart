@@ -14,24 +14,22 @@ class SpecialOfferCard extends StatelessWidget {
     return GestureDetector(
       onTap: onpress,
       child: SizedBox(
-        height: getProportionateScreenHeight(100),
+        height: getProportionateScreenHeight(80),
         width: getProportionateScreenWidth(240),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(30),
           child: Stack(
             children: [
-              Expanded(
-                child: Image.asset(
-                  imagePath,
-                  fit: BoxFit.fill,
-                ),
+              Image.asset(
+                imagePath,
+                fit: BoxFit.fill,
               ),
               Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                      colors: [Color(0xff343434).withOpacity(0.4), Color(0xff343434).withOpacity(0.2)]),
+                      colors: [const Color(0xff343434).withOpacity(0.4), const Color(0xff343434).withOpacity(0.2)]),
                 ),
               ),
               Padding(

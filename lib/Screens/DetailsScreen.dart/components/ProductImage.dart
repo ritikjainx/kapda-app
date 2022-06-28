@@ -6,7 +6,7 @@ import '../../../sizeConfig.dart';
 
 class ProductImage extends StatefulWidget {
   final Product product;
-  ProductImage({this.product});
+  const ProductImage({this.product});
 
   @override
   _ProductImageState createState() => _ProductImageState();
@@ -18,19 +18,22 @@ class _ProductImageState extends State<ProductImage> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
-          width: getProportionateScreenWidth(238),
-          child: AspectRatio(aspectRatio: 1, child: Image.asset(widget.product.images[selected])),
+        Container(
+          color: Colors.white,
+          // width: getProportionateScreenWidth(238),
+          width: double.infinity,
+          height: getProportionateScreenHeight(220),
+          child: AspectRatio(aspectRatio: 1, child: Image.network(widget.product.images)),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: List.generate(
-            widget.product.images.length,
-            (index) => imagePrevCard(
-              index,
-            ),
-          ),
-        )
+        // Row(
+        //   mainAxisAlignment: MainAxisAlignment.center,
+        //   children: List.generate(
+        //     widget.product.images.length,
+        //     (index) => imagePrevCard(
+        //       index,
+        //     ),
+        //   ),
+        // )
       ],
     );
   }
@@ -45,8 +48,8 @@ class _ProductImageState extends State<ProductImage> {
           height: getProportionateScreenHeight(60),
           width: getProportionateScreenWidth(70),
           child: Container(
-              margin: EdgeInsets.only(right: 10),
-              padding: EdgeInsets.all(6),
+              margin: const EdgeInsets.only(right: 10),
+              padding: const EdgeInsets.all(6),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 color: Colors.white,

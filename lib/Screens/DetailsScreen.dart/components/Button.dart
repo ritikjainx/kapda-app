@@ -15,7 +15,7 @@ class Buttons extends StatelessWidget {
       child: Container(
         height: getProportionateScreenHeight(50),
         width: getProportionateScreenWidth(50),
-        decoration: BoxDecoration(color: Color(0xffeeeff0), shape: BoxShape.circle),
+        decoration: const BoxDecoration(color: Color(0xffeeeff0), shape: BoxShape.circle),
         child: Icon(icon),
       ),
     );

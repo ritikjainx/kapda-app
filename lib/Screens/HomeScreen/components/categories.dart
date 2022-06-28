@@ -31,10 +31,10 @@ class Categories extends StatelessWidget {
             aspectRatio: 1.0,
             child: Container(
               decoration: BoxDecoration(
-                color: Color(0xffffecdf),
+                color: const Color(0xffffecdf),
                 borderRadius: BorderRadius.circular(15),
               ),
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: SvgPicture.asset(
                 iconpath,
                 height: getProportionateScreenHeight(25),

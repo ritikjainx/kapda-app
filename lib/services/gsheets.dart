@@ -1,6 +1,6 @@
 import 'package:gsheets/gsheets.dart';
 
-class UserSheetApi {
+class GSheetsApi {
   static const _spreadsheetid = '1ZsD-OH9MzsiPjHJlczBYb0Gsrv7nEZGOztg0WFKW2R4';
   static const _cred = r'''
 {
@@ -16,23 +16,47 @@ class UserSheetApi {
   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/kapda-app%40kapda-app-354506.iam.gserviceaccount.com"
 }
 ''';
+
   static final _gsheets = GSheets(_cred);
   static Worksheet _userSheet;
+  static Spreadsheet _spreadsheet;
 
   static Future init() async {
-    final Spreadsheet _spreadsheet = await _gsheets.spreadsheet(_spreadsheetid);
-    _userSheet = await _getWorkSheet(_spreadsheet, title: 'Users');
+    _spreadsheet = await _gsheets.spreadsheet(_spreadsheetid);
+    print(_spreadsheet);
   }
 
   static Future<Worksheet> _getWorkSheet(Spreadsheet spreadsheet, {String title}) async {
     try {
       return await spreadsheet.addWorksheet(title);
     } catch (e) {
-      spreadsheet.worksheetByTitle(title);
+      print(e);
+      return spreadsheet.worksheetByTitle(title);
     }
   }
 
-  
+  static Future insert(Map<String, dynamic> userData) async {
+    _userSheet = await _getWorkSheet(_spreadsheet, title: 'Users');
+    if (_userSheet == null) {
+      print('null');
+      return;
+    }
+    await _userSheet.values.map.appendRow(userData);
+    print('added');
+  }
 
-  
+  static Future getAllProducts() async {
+    _userSheet = _spreadsheet.worksheetByTitle("Products");
+    if (_userSheet == null) {
+      print('null');
+      return;
+    }
+    return await _userSheet.values.map.allRows();
+  }
+
+  static updateProductbyKey({String id, String key, String value}) {
+    _userSheet = _spreadsheet.worksheetByTitle("Products");
+
+    _userSheet.values.insertValueByKeys(value, columnKey: key, rowKey: id);
+  }
 }

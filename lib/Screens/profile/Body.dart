@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:kapda/Screens/LoginPage/loginPage.dart';
@@ -11,12 +12,13 @@ class Body extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          Gap(h: 25),
+          const Gap(h: 25),
           // ListOptions(svgicon: 'assets/icons/User Icon.svg', text: 'My Account'),
           ListOptions(
             svgicon: 'assets/icons/Log out.svg',
             text: 'Log Out',
-            onpress: () {
+            onpress: () async{
+             await FirebaseAuth.instance.signOut();
               Navigator.pushNamedAndRemoveUntil(context, LoginPage.routename, (route) => false);
             },
           ),
@@ -46,7 +48,7 @@ class ListOptions extends StatelessWidget {
             vertical: getProportionateScreenHeight(8),
             horizontal: getProportionateScreenWidth(20),
           ),
-          tileColor: Color(0xfff5f6f9),
+          tileColor: const Color(0xfff5f6f9),
           leading: SvgPicture.asset(
             svgicon,
             color: kPrimaryColor,
@@ -55,7 +57,7 @@ class ListOptions extends StatelessWidget {
             text,
             style: TextStyle(fontSize: getProportionateScreenHeight(18)),
           ),
-          trailing: Icon(Icons.arrow_forward_ios),
+          trailing: const Icon(Icons.arrow_forward_ios),
           onTap: onpress,
         ),
       ),

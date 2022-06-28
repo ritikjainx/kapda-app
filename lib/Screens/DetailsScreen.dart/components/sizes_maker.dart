@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kapda/Modals/Product.dart';
 
 import '../../../sizeConfig.dart';
 
@@ -28,8 +27,8 @@ class _SizeMakerState extends State<SizeMaker> {
           });
         },
         child: Container(
-            margin: EdgeInsets.only(left: 40),
-            padding: EdgeInsets.all(4),
+            margin: const EdgeInsets.only(left: 40),
+            padding: const EdgeInsets.all(4),
             width: getProportionateScreenWidth(40),
             height: getProportionateScreenHeight(40),
             decoration: BoxDecoration(

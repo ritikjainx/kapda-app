@@ -32,6 +32,12 @@ class IconButtonWithCounter extends StatelessWidget {
                 top: -3,
                 right: 0,
                 child: Container(
+                    height: getProportionateScreenHeight(16),
+                    width: getProportionateScreenWidth(16),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: const Color(0xffff4848),
+                    ),
                     child: Center(
                         child: Text(
                       numberofItems.toString(),
@@ -40,13 +46,7 @@ class IconButtonWithCounter extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           fontSize: getProportionateScreenHeight(10),
                           height: 1),
-                    )),
-                    height: getProportionateScreenHeight(16),
-                    width: getProportionateScreenWidth(16),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Color(0xffff4848),
-                    )),
+                    ))),
               )
           ],
         ));

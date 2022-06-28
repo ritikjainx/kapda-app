@@ -48,7 +48,7 @@ class _BodyState extends State<Body> {
                 },
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Expanded(
@@ -58,7 +58,7 @@ class _BodyState extends State<Body> {
                     Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: List.generate(splashpages.length, (index) => Dot(index: index))),
-                    Spacer(),
+                    const Spacer(),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
                       child: Defaultbutton(
@@ -68,7 +68,7 @@ class _BodyState extends State<Body> {
                         },
                       ),
                     ),
-                    Spacer()
+                    const Spacer()
                   ],
                 ))
           ],
@@ -80,15 +80,15 @@ class _BodyState extends State<Body> {
 
 class Dot extends StatelessWidget {
   final int index;
-  Dot({this.index});
+  const Dot({this.index});
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
         duration: kanimationDuration,
-        margin: EdgeInsets.only(right: 5),
+        margin: const EdgeInsets.only(right: 5),
         height: 6,
         width: currentPage == index ? 20 : 6,
         decoration: BoxDecoration(
-            color: currentPage == index ? kPrimaryColor : Color(0xffd8d8d8), borderRadius: BorderRadius.circular(3)));
+            color: currentPage == index ? kPrimaryColor : const Color(0xffd8d8d8), borderRadius: BorderRadius.circular(3)));
   }
 }

@@ -72,7 +72,7 @@ class _SignFormState extends State<SignForm> {
         },
         keyboardType: TextInputType.phone,
         maxLength: 10,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           hintText: 'Enter your phone number',
           labelText: 'Phone number',
         ));

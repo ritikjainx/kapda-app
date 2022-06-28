@@ -22,6 +22,9 @@ if (flutterVersionName == null) {
 }
 
 apply plugin: 'com.android.application'
+// START: FlutterFire Configuration
+apply plugin: 'com.google.gms.google-services'
+// END: FlutterFire Configuration
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
@@ -29,14 +32,14 @@ android {
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
+     compileOptions {
+         sourceCompatibility JavaVersion.VERSION_11
+         targetCompatibility JavaVersion.VERSION_11
+     }
 
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
+     kotlinOptions {
+         jvmTarget = '1.8'
+     }
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -68,4 +71,6 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation platform('com.google.firebase:firebase-bom:30.1.0')
+    implementation 'com.google.firebase:firebase-auth-ktx'
 }

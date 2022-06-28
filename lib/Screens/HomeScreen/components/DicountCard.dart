@@ -16,7 +16,7 @@ class Discountcard extends StatelessWidget {
       // height: getProportionateScreenHeight(100),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
-        color: Color(0xff4a3298),
+        color: const Color(0xff4a3298),
       ),
 
       child: Text.rich(TextSpan(

@@ -7,7 +7,7 @@ class ForgetScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Forget Password'),
+        title: const Text('Forget Password'),
       ),
       body: Body(),
     );

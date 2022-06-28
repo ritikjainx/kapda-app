@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kapda/Screens/Forget_Screen/forgetscreen.dart';
 import 'package:kapda/components/NoaccountSignup.dart';
-import 'package:kapda/components/socialMedia.dart';
 import 'package:kapda/constants.dart';
 import 'package:kapda/sizeConfig.dart';
 
@@ -33,7 +31,7 @@ class _BodyState extends State<Body> {
           SizedBox(
             height: getProportionateScreenHeight(30),
           ),
-          Text(
+          const Text(
             'Sign in with your registered mobile number ',
             textAlign: TextAlign.center,
           ),
@@ -52,7 +50,7 @@ class _BodyState extends State<Body> {
                 },
                 activeColor: kPrimaryColor,
               ),
-              Text('Remember Me'),
+              const Text('Remember Me'),
             ],
           ),
           SizedBox(

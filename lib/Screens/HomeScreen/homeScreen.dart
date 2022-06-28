@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../../components/BottomnavBar.dart';
 import '../../Menustate.dart';
 import '../../services/cart_products.dart';
+import '../../sizeConfig.dart';
 import '../CartScreen/CartScreen.dart';
 import 'body.dart';
 
@@ -11,12 +12,14 @@ class HomeScreen extends StatelessWidget {
   static const routeName = '/HomeScreen';
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
+
     return Scaffold(
-      bottomNavigationBar: BottomNavBar(
+      bottomNavigationBar: const BottomNavBar(
         selected: MenuState.homepage,
       ),
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Kapda",
           style: TextStyle(color: Colors.black),
         ),
@@ -35,10 +38,15 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(
                   width: 5,
                 ),
-                Text(
-                  context.read<CartProducts>().items.length.toString(),
-                  style: TextStyle(color: kTextColor),
-                ),
+                context.read<CartProducts>().items.length == 1
+                    ? Text(
+                        "${context.read<CartProducts>().items.length} Item",
+                        style: const TextStyle(color: kTextColor),
+                      )
+                    : Text(
+                        "${context.read<CartProducts>().items.length} Items",
+                        style: const TextStyle(color: kTextColor),
+                      ),
                 const SizedBox(
                   width: 10,
                 ),

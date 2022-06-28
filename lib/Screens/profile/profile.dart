@@ -12,13 +12,13 @@ class Profile extends StatelessWidget {
     SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "profile",
           style: TextStyle(color: Colors.black),
         ),
       ),
       body: Body(),
-      bottomNavigationBar: BottomNavBar(
+      bottomNavigationBar: const BottomNavBar(
         selected: MenuState.profile,
       ),
     );

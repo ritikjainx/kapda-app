@@ -9,8 +9,8 @@ class CheckOutBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(30),
-      decoration: BoxDecoration(
+      padding: const EdgeInsets.all(30),
+      decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40)),
         boxShadow: [
@@ -26,15 +26,15 @@ class CheckOutBar extends StatelessWidget {
           Row(
             children: [
               SvgPicture.asset('assets/icons/receipt.svg'),
-              Spacer(),
-              Text('Add Discount Coupon'),
-              SizedBox(width: 10),
-              Icon(
+              const Spacer(),
+              const Text('Add Discount Coupon'),
+              const SizedBox(width: 10),
+              const Icon(
                 Icons.arrow_forward_ios,
               )
             ],
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -43,11 +43,11 @@ class CheckOutBar extends StatelessWidget {
                 children: [
                   TextSpan(
                     text: '\$ ${context.read<CartProducts>().total().toStringAsFixed(2)}',
-                    style: TextStyle(fontSize: 20, color: Colors.black),
+                    style: const TextStyle(fontSize: 20, color: Colors.black),
                   )
                 ],
               )),
-              Spacer(),
+              const Spacer(),
               SizedBox(
                 width: SizeConfig.screenWidth * 0.5,
                 child: Defaultbutton(

@@ -27,4 +27,4 @@ final kOTPinputdecoration = InputDecoration(
     border: outlineInputBorder());
 
 OutlineInputBorder outlineInputBorder() =>
-    OutlineInputBorder(borderRadius: BorderRadius.circular(15), borderSide: BorderSide(color: kTextColor));
+    OutlineInputBorder(borderRadius: BorderRadius.circular(15), borderSide: const BorderSide(color: kTextColor));

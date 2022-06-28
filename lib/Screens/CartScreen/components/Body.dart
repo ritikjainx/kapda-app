@@ -17,8 +17,8 @@ class _BodyState extends State<Body> {
     return Column(children: [
       Expanded(
         child: Consumer<CartProducts>(builder: (context, cartproducts, child) {
-          return cartproducts.items.length == 0
-              ? Center(
+          return cartproducts.items.isEmpty
+              ? const Center(
                   child: Text("No items added in cart"),
                 )
               : ListView.builder(
@@ -27,20 +27,19 @@ class _BodyState extends State<Body> {
                     final productdetails = cartproducts.items;
                     return Dismissible(
                       key: Key(productdetails[index].id.toString()),
-                      child: ProductCard(productdetails: productdetails[index]),
                       direction: DismissDirection.endToStart,
                       onDismissed: (direction) {
                         setState(() {
                           cartproducts.removeproduct(index);
                         });
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Item removed from cart')));
+                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Item removed from cart')));
                       },
                       background: Container(
                         padding: EdgeInsets.only(right: getProportionateScreenWidth(20)),
-                        color: Color(0xffffe6e6),
+                        color: const Color(0xffffe6e6),
                         child: Row(
                           children: [
-                            Spacer(),
+                            const Spacer(),
                             SvgPicture.asset(
                               'assets/icons/Trash.svg',
                               height: getProportionateScreenHeight(20),
@@ -48,6 +47,7 @@ class _BodyState extends State<Body> {
                           ],
                         ),
                       ),
+                      child: ProductCard(productdetails: productdetails[index]),
                     );
                   });
         }),
