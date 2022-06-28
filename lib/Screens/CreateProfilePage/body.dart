@@ -1,4 +1,3 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kapda/Modals/ApiModels/user_modal.dart' as userModal;
@@ -8,6 +7,7 @@ import 'package:kapda/components/Gap.dart';
 import 'package:kapda/services/auth_provider.dart';
 import 'package:kapda/sizeConfig.dart';
 import 'package:provider/provider.dart';
+import 'package:uuid/uuid.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -126,14 +126,18 @@ class _DetailsState extends State<Details> {
                     _phoneNumberEditingController.text;
                 await Provider.of<AuthProvider>(context, listen: false).sendOtpToPhone(context: context);
 
+                var uuid = Uuid();
+                String uid = uuid.v4();
                 final user = userModal.User(
-                  id: FirebaseAuth.instance.currentUser.uid,
+                  // id: FirebaseAuth.instance.currentUser.uid,
+                  id: uid,
                   firstName: _firstNameEditingController.text,
                   lastName: _lastNameEditingController.text,
                   address: _addressEditingController.text,
                   phoneNumber: _phoneNumberEditingController.text,
                 );
-                Provider.of<AuthProvider>(context,listen: false).user = user;
+                Provider.of<AuthProvider>(context, listen: false).user = user;
+                print(Provider.of<AuthProvider>(context, listen: false).user.phoneNumber);
               }
             },
           ),

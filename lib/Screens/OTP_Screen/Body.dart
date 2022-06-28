@@ -95,15 +95,19 @@ class _BodyState extends State<Body> {
                   String otpValue = _otp1.text + _otp2.text + _otp3.text + _otp4.text + _otp5.text + _otp6.text;
                   String verificationId = authProvider.verificationid;
                   try {
+                    bool exist = await authProvider.checkUser();
                     final credential = PhoneAuthProvider.credential(verificationId: verificationId, smsCode: otpValue);
                     final auth = await FirebaseAuth.instance.signInWithCredential(credential);
                     print(auth.user.uid);
-                    await authProvider.saveUserToDataBase();
-                    authProvider.errorText = "";
+                    if (!exist) {
+                      await authProvider.saveUserToDataBase();
+                    }
+                    authProvider.updateErrorText("");
                     await Provider.of<ProductsService>(context, listen: false).getallProducts();
+
                     Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
                   } catch (e) {
-                    authProvider.errorText = e.toString();
+                    authProvider.updateErrorText(e.toString());
                   }
                 },
               ),

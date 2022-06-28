@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:kapda/Screens/DetailsScreen.dart/Detailscreen.dart';
+import 'package:kapda/Screens/products_screen.dart';
 import 'package:kapda/components/Gap.dart';
 import 'package:kapda/services/product_service.dart';
 import 'package:kapda/sizeConfig.dart';
 import 'package:provider/provider.dart';
+import '../../Modals/Product.dart';
 import 'components/DicountCard.dart';
 import 'components/SectionBreak.dart';
 import 'components/SpecialOfferCard.dart';
@@ -23,7 +25,7 @@ class _BodyState extends State<Body> {
   }
 
   initData() async {
-    await Provider.of<ProductsService>(context,listen: false).getallProducts();
+    await Provider.of<ProductsService>(context, listen: false).getallProducts();
   }
 
   @override
@@ -35,18 +37,6 @@ class _BodyState extends State<Body> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // InkWell(
-              //   onTap: () async {
-              //     await productProvider.getallProducts();
-              //   },
-              //   child: Container(
-              //     height: 100,
-              //     width: 100,
-              //     child: Center(
-              //       child: Text("get Data"),
-              //     ),
-              //   ),
-              // ),
               const Discountcard(),
               SizedBox(height: getProportionateScreenHeight(25)),
               Categories(),
@@ -64,7 +54,9 @@ class _BodyState extends State<Body> {
                       imagePath: 'assets/images/mens_colection.jpeg',
                       categoryTitle: 'Male',
                       onpress: () {
-                        print('pressed');
+                        final List<Product> filteredList =
+                            productProvider.products.where((element) => element.catagory == 'm').toList();
+                        Navigator.pushNamed(context, ProductsScreen.routeName, arguments: filteredList);
                       },
                     ),
                     SizedBox(width: getProportionateScreenWidth(15)),
@@ -72,7 +64,10 @@ class _BodyState extends State<Body> {
                       imagePath: 'assets/images/women_collection1.jpeg',
                       categoryTitle: 'Female',
                       onpress: () {
-                        print('preseed');
+                        final List<Product> filteredList =
+                            productProvider.products.where((element) => element.catagory == 'f').toList();
+
+                        Navigator.pushNamed(context, ProductsScreen.routeName, arguments: filteredList);
                       },
                     )
                   ],

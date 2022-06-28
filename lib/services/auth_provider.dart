@@ -1,9 +1,8 @@
 import 'dart:developer';
-
+import 'dart:io' show Platform;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:kapda/Modals/ApiModels/user_modal.dart' as userModal;
-
+import 'package:kapda/Modals/ApiModels/user_modal.dart' as usermodal;
 import '../Screens/OTP_Screen/OTPScreen.dart';
 import 'gsheets.dart';
 
@@ -12,7 +11,7 @@ class AuthProvider extends ChangeNotifier {
   String errorText = '';
   String verificationid = '';
   final _auth = FirebaseAuth.instance;
-  userModal.User user;
+  usermodal.User user;
 
   String get phoneNumber => _phoneNumber;
 
@@ -25,9 +24,10 @@ class AuthProvider extends ChangeNotifier {
         .verifyPhoneNumber(
       phoneNumber: '+91$phoneNumber',
       verificationCompleted: (PhoneAuthCredential credential) async {
-        // print(credential);
+        print(credential);
         // if (Platform.isAndroid) {
         //   await _auth.signInWithCredential(credential);
+        //   Navigator.pushNamed(context, OTPscreen.routeName);
         // }
       },
       verificationFailed: (FirebaseAuthException e) {
@@ -54,5 +54,19 @@ class AuthProvider extends ChangeNotifier {
     final userData = user.tojson();
     print(userData);
     await GSheetsApi.insert(userData);
+  }
+
+  Future<bool> checkUser() async {
+    bool exist = await GSheetsApi.checkUser(phoneNumber: _phoneNumber);
+    if (!exist) {
+      errorText = 'user doesn\'t exist , please sign up first';
+      notifyListeners();
+    }
+    return exist;
+  }
+
+  updateErrorText(String eText) {
+    errorText = eText;
+    notifyListeners();
   }
 }

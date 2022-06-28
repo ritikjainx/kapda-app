@@ -22,7 +22,7 @@ class CartScreen extends StatelessWidget {
               style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
               children: [
                 TextSpan(
-                  text: '\n ${context.read<CartProducts>().items.length} Items',
+                  text: '\n ${context.watch<CartProducts>().items.length} Items',
                   style: const TextStyle(fontSize: 15, fontWeight: FontWeight.normal, color: Colors.black),
                 )
               ],

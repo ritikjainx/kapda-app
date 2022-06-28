@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:kapda/components/DefaultButton.dart';
+import 'package:kapda/constants.dart';
 import '../../../services/cart_products.dart';
 import '../../../sizeConfig.dart';
 import 'package:provider/provider.dart';
@@ -52,7 +53,48 @@ class CheckOutBar extends StatelessWidget {
                 width: SizeConfig.screenWidth * 0.5,
                 child: Defaultbutton(
                   text: 'CheckOut',
-                  onpressed: () {},
+                  onpressed: () async {
+                    await showDialog(
+                        context: context,
+                        builder: (_) {
+                          return SimpleDialog(
+                            title: Container(
+                              color: kPrimaryColor,
+                              child: Text(
+                                "Total payment\n ${'\$ ${context.read<CartProducts>().total().toStringAsFixed(2)}'}",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                            children: [
+                              Divider(),
+                              ListTile(
+                                title: Text("Pay with UPI"),
+                                onTap: () {
+                                  Navigator.pop(context);
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(const SnackBar(content: Text('payment successful')));
+                                },
+                              ),
+                              ListTile(
+                                title: Text("Pay with Net Banking"),
+                                onTap: () {
+                                  Navigator.pop(context);
+                                  ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(const SnackBar(content: Text('payment successful')));
+                                },
+                              ),
+                              ListTile(
+                                trailing: Text("Cancel"),
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
+                              )
+                            ],
+                          );
+                        });
+                  },
                 ),
               )
             ],

@@ -59,4 +59,14 @@ class GSheetsApi {
 
     _userSheet.values.insertValueByKeys(value, columnKey: key, rowKey: id);
   }
+
+  static Future<bool> checkUser({String phoneNumber}) async {
+    _userSheet = _spreadsheet.worksheetByTitle("Users");
+    List<String> users = await _userSheet.values.columnByKey("phoneNumber", fromRow: 2);
+    if (users.contains(phoneNumber)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

@@ -32,7 +32,8 @@ class _BodyState extends State<Body> {
                         setState(() {
                           cartproducts.removeproduct(index);
                         });
-                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Item removed from cart')));
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(content: Text('Item removed from cart')));
                       },
                       background: Container(
                         padding: EdgeInsets.only(right: getProportionateScreenWidth(20)),
@@ -47,7 +48,7 @@ class _BodyState extends State<Body> {
                           ],
                         ),
                       ),
-                      child: ProductCard(productdetails: productdetails[index]),
+                      child: CartProductCard(productdetails: productdetails[index]),
                     );
                   });
         }),

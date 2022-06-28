@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:kapda/Modals/Product.dart';
 import 'package:kapda/services/product_service.dart';
 import 'package:provider/provider.dart';
-
 import '../../../constants.dart';
 import '../../../sizeConfig.dart';
 
@@ -58,10 +57,11 @@ class _ProductCardState extends State<ProductCard> {
                   ),
                   InkWell(
                     onTap: () {
-                      setState(() {
-                        widget.demoProduct.isFavourite = !widget.demoProduct.isFavourite;
-                      });
+                      // setState(() {
+                      //   widget.demoProduct.isFavourite = !widget.demoProduct.isFavourite;
+                      // });
                       Product p = widget.demoProduct;
+                      Provider.of<ProductsService>(context, listen: false).toggleFavStatus(id: p.id);
                       Provider.of<ProductsService>(context, listen: false).updateProductKey(
                         id: p.id.toString(),
                         key: 'isFav',
