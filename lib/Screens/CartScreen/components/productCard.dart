@@ -25,29 +25,31 @@ class CartProductCard extends StatelessWidget {
           SizedBox(
             height: getProportionateScreenHeight(88),
             width: SizeConfig.screenWidth * 0.5,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  productdetails.title,
-                  maxLines: 2,
-                  style: TextStyle(color: Colors.black, fontSize: getProportionateScreenHeight(20)),
-                ),
-                const SizedBox(height: 5),
-                Text.rich(TextSpan(
-                  text: '\$ ${productdetails.price.toString()}',
-                  style: TextStyle(color: kPrimaryColor, fontSize: getProportionateScreenHeight(15)),
-                  children: [
-                    TextSpan(
-                        text: ' X ${productdetails.quantity.toString()}', style: const TextStyle(color: kTextColor))
-                  ],
-                )),
-                Text(
-                  productdetails.size,
-                  maxLines: 1,
-                  style: TextStyle(fontSize: getProportionateScreenHeight(15)),
-                ),
-              ],
+            child: FittedBox(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    productdetails.title,
+                    maxLines: 2,
+                    style: TextStyle(color: Colors.black, fontSize: getProportionateScreenHeight(20)),
+                  ),
+                  const SizedBox(height: 5),
+                  Text.rich(TextSpan(
+                    text: '\$ ${productdetails.price.toString()}',
+                    style: TextStyle(color: kPrimaryColor, fontSize: getProportionateScreenHeight(15)),
+                    children: [
+                      TextSpan(
+                          text: ' X ${productdetails.quantity.toString()}', style: const TextStyle(color: kTextColor))
+                    ],
+                  )),
+                  Text(
+                    'size - ${productdetails.size}',
+                    maxLines: 1,
+                    style: TextStyle(fontSize: getProportionateScreenHeight(15)),
+                  ),
+                ],
+              ),
             ),
           ),
         ],

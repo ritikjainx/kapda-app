@@ -91,21 +91,26 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     print("rebuilding products screen");
     initData();
-    return GridView.builder(
-      shrinkWrap: true,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        childAspectRatio: 0.75,
-      ),
-      itemCount: filteredProducts.length,
-      itemBuilder: (_, index) {
-        return ProductCard(
-          demoProduct: filteredProducts[index],
-          onpress: () {
-            Navigator.pushNamed(context, DetailsScreen.routeName, arguments: filteredProducts[index]);
-          },
-        );
-      },
-    );
+    if (filteredProducts.length == 0) {
+      return Center(
+        child: Text("No items added as Favourite"),
+      );
+    } else
+      return GridView.builder(
+        shrinkWrap: true,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 0.75,
+        ),
+        itemCount: filteredProducts.length,
+        itemBuilder: (_, index) {
+          return ProductCard(
+            demoProduct: filteredProducts[index],
+            onpress: () {
+              Navigator.pushNamed(context, DetailsScreen.routeName, arguments: filteredProducts[index]);
+            },
+          );
+        },
+      );
   }
 }

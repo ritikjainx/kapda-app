@@ -15,10 +15,13 @@ ThemeData themeData() {
   );
 }
 
-AppBarTheme appBarTheme =  AppBarTheme(
+AppBarTheme appBarTheme = AppBarTheme(
   backgroundColor: Colors.white,
-  elevation: 0,
-  iconTheme: IconThemeData(color: Colors.black), toolbarTextStyle: TextTheme(headline6: TextStyle(color: Color(0xff8d8d8d), fontSize: 18)).bodyText2, titleTextStyle: TextTheme(headline6: TextStyle(color: Color(0xff8d8d8d), fontSize: 18)).headline6, systemOverlayStyle: SystemUiOverlayStyle.dark,
+  elevation: 2,
+  iconTheme: IconThemeData(color: Colors.black),
+  toolbarTextStyle: TextTheme(headline6: TextStyle(color: Color(0xff8d8d8d), fontSize: 18)).bodyText2,
+  titleTextStyle: TextTheme(headline6: TextStyle(color: Color(0xff8d8d8d), fontSize: 18)).headline6,
+  systemOverlayStyle: SystemUiOverlayStyle.dark,
 );
 
 InputDecorationTheme inputDecorationTheme() {

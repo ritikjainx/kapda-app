@@ -58,7 +58,9 @@ class CheckOutBar extends StatelessWidget {
                         context: context,
                         builder: (_) {
                           return SimpleDialog(
+                            titlePadding: EdgeInsets.all(0),
                             title: Container(
+                              padding: EdgeInsets.all(10),
                               color: kPrimaryColor,
                               child: Text(
                                 "Total payment\n ${'\$ ${context.read<CartProducts>().total().toStringAsFixed(2)}'}",
@@ -67,17 +69,19 @@ class CheckOutBar extends StatelessWidget {
                               ),
                             ),
                             children: [
-                              Divider(),
                               ListTile(
                                 title: Text("Pay with UPI"),
+                                trailing: Icon(Icons.arrow_forward_ios),
                                 onTap: () {
                                   Navigator.pop(context);
                                   ScaffoldMessenger.of(context)
                                       .showSnackBar(const SnackBar(content: Text('payment successful')));
                                 },
                               ),
+                              Divider(),
                               ListTile(
                                 title: Text("Pay with Net Banking"),
+                                trailing: Icon(Icons.arrow_forward_ios),
                                 onTap: () {
                                   Navigator.pop(context);
                                   ScaffoldMessenger.of(context).hideCurrentSnackBar();
@@ -85,6 +89,7 @@ class CheckOutBar extends StatelessWidget {
                                       .showSnackBar(const SnackBar(content: Text('payment successful')));
                                 },
                               ),
+                              Divider(),
                               ListTile(
                                 trailing: Text("Cancel"),
                                 onTap: () {
