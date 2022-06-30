@@ -4,7 +4,7 @@ import 'package:kapda/components/CustomsvgImage.dart';
 import 'package:kapda/components/DefaultButton.dart';
 import 'package:kapda/components/Gap.dart';
 import 'package:kapda/services/auth_provider.dart';
-import 'package:kapda/sizeConfig.dart';
+import 'package:kapda/size_config.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
@@ -135,7 +135,7 @@ class _DetailsState extends State<Details> {
                     _phoneNumberEditingController.text;
                 await Provider.of<AuthProvider>(context, listen: false).sendOtpToPhone(context: context);
 
-                var uuid = Uuid();
+                var uuid = const Uuid();
                 String uid = uuid.v4();
                 final user = usermodal.User(
                   // id: FirebaseAuth.instance.currentUser.uid,

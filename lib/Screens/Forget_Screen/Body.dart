@@ -3,7 +3,7 @@ import 'package:kapda/components/CustomsvgImage.dart';
 import 'package:kapda/components/DefaultButton.dart';
 import 'package:kapda/components/NoaccountSignup.dart';
 import 'package:kapda/components/formStateErrors.dart';
-import 'package:kapda/sizeConfig.dart';
+import 'package:kapda/size_config.dart';
 
 import '../../constants.dart';
 

@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:kapda/Routes.dart';
+import 'package:kapda/routes.dart';
 import 'package:kapda/Screens/HomeScreen/homeScreen.dart';
 import 'package:kapda/services/auth_provider.dart';
 import 'package:kapda/services/cart_products.dart';

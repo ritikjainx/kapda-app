@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../sizeConfig.dart';
+import '../../../size_config.dart';
 
 class Categories extends StatelessWidget {
   final List<Map> categories = [

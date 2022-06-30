@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../services/cart_products.dart';
 import 'components/Body.dart';
-import 'package:kapda/sizeConfig.dart';
-import '../../components/BottomnavBar.dart';
-import '../../Menustate.dart';
+import 'package:kapda/size_config.dart';
+import '../../components/bottomnavBar.dart';
+import '../../menu_state.dart';
 
 class CartScreen extends StatelessWidget {
   static const routeName = '/cart';

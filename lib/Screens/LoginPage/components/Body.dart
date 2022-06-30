@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kapda/components/NoaccountSignup.dart';
 import 'package:kapda/constants.dart';
 import 'package:kapda/services/shared_prefs.dart';
-import 'package:kapda/sizeConfig.dart';
+import 'package:kapda/size_config.dart';
 
 import 'SignForm.dart';
 

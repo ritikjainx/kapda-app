@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../constants.dart';
-import '../../../sizeConfig.dart';
+import '../../../size_config.dart';
 
 class IconButtonWithCounter extends StatelessWidget {
   final String svgPath;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kapda/Screens/splash/components/body.dart';
-import 'package:kapda/sizeConfig.dart';
+import 'package:kapda/size_config.dart';
 
 class SplashScreen extends StatelessWidget {
   static const routename = 'splashscreen';

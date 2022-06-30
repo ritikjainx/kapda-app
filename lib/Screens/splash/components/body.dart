@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kapda/Screens/LoginPage/loginPage.dart';
 import 'package:kapda/components/DefaultButton.dart';
-import '../../../sizeConfig.dart';
+import '../../../size_config.dart';
 import '../components/splashContent.dart';
 import 'package:kapda/constants.dart';
 

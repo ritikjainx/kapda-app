@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kapda/Modals/Product.dart';
 
-import '../../../sizeConfig.dart';
+import '../../../size_config.dart';
 
 class ProductDescription extends StatelessWidget {
   const ProductDescription({

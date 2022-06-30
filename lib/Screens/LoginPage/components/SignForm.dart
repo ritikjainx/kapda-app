@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import '../../../components/Gap.dart';
 import '../../../constants.dart';
 import '../../../services/auth_provider.dart';
-import '../../../sizeConfig.dart';
+import '../../../size_config.dart';
 class SignForm extends StatefulWidget {
   @override
   _SignFormState createState() => _SignFormState();

@@ -3,7 +3,7 @@ import 'package:kapda/Modals/Product.dart';
 import 'package:kapda/services/product_service.dart';
 import 'package:provider/provider.dart';
 import '../../../constants.dart';
-import '../../../sizeConfig.dart';
+import '../../../size_config.dart';
 
 class ProductCard extends StatefulWidget {
   final Product demoProduct;

@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:kapda/Screens/LoginPage/loginPage.dart';
 import 'package:kapda/components/Gap.dart';
 import 'package:kapda/constants.dart';
-import 'package:kapda/sizeConfig.dart';
+import 'package:kapda/size_config.dart';
 
 class Body extends StatelessWidget {
   @override

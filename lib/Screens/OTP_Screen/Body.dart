@@ -4,7 +4,7 @@ import 'package:kapda/components/DefaultButton.dart';
 import 'package:kapda/components/Gap.dart';
 import 'package:kapda/constants.dart';
 import 'package:kapda/services/auth_provider.dart';
-import 'package:kapda/sizeConfig.dart';
+import 'package:kapda/size_config.dart';
 import 'package:provider/provider.dart';
 
 import '../../services/product_service.dart';

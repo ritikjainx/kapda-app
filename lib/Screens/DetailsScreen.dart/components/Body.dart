@@ -3,7 +3,7 @@ import 'package:kapda/Modals/Cartstuff.dart';
 import 'package:kapda/Modals/Product.dart';
 import 'package:kapda/Screens/DetailsScreen.dart/components/sizes_maker.dart';
 import 'package:kapda/components/DefaultButton.dart';
-import 'package:kapda/sizeConfig.dart';
+import 'package:kapda/size_config.dart';
 import '../../../services/cart_products.dart';
 import 'Button.dart';
 import 'ProductImage.dart';

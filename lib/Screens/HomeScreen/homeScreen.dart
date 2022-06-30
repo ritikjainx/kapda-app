@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:kapda/constants.dart';
 import 'package:provider/provider.dart';
-import '../../components/BottomnavBar.dart';
-import '../../Menustate.dart';
+import '../../components/bottomnavBar.dart';
+import '../../menu_state.dart';
 import '../../services/cart_products.dart';
-import '../../sizeConfig.dart';
+import '../../size_config.dart';
 import '../CartScreen/CartScreen.dart';
 import 'body.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kapda/Modals/Cartstuff.dart';
 import '../../../constants.dart';
-import '../../../sizeConfig.dart';
+import '../../../size_config.dart';
 
 class CartProductCard extends StatelessWidget {
   final CartStuff productdetails;

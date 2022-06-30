@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:kapda/services/product_service.dart';
 import 'package:provider/provider.dart';
 import '../Constants.dart';
-import '../Menustate.dart';
+import '../menu_state.dart';
 import '../Modals/Product.dart';
-import '../components/BottomnavBar.dart';
+import '../components/bottomnavBar.dart';
 import '../services/cart_products.dart';
 import 'CartScreen/CartScreen.dart';
 import 'DetailsScreen.dart/Detailscreen.dart';
@@ -91,11 +91,11 @@ class _BodyState extends State<Body> {
   Widget build(BuildContext context) {
     print("rebuilding products screen");
     initData();
-    if (filteredProducts.length == 0) {
-      return Center(
+    if (filteredProducts.isEmpty) {
+      return const Center(
         child: Text("No items added as Favourite"),
       );
-    } else
+    } else {
       return GridView.builder(
         shrinkWrap: true,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -112,5 +112,6 @@ class _BodyState extends State<Body> {
           );
         },
       );
+    }
   }
 }

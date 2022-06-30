@@ -4,8 +4,8 @@ import 'package:kapda/Screens/CartScreen/CartScreen.dart';
 import 'package:kapda/Screens/HomeScreen/homeScreen.dart';
 import 'package:kapda/Screens/products_screen.dart';
 import 'package:kapda/Screens/profile/profile.dart';
-import 'package:kapda/sizeConfig.dart';
-import '../Menustate.dart';
+import 'package:kapda/size_config.dart';
+import '../menu_state.dart';
 import '../constants.dart';
 
 class BottomNavBar extends StatelessWidget {

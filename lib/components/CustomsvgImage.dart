@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:kapda/constants.dart';
 
-import '../sizeConfig.dart';
+import '../size_config.dart';
 
 class SvgImage extends StatelessWidget {
   final String svgPath;

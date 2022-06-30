@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:kapda/Menustate.dart';
-import 'package:kapda/sizeConfig.dart';
-import '../../components/BottomnavBar.dart';
+import 'package:kapda/menu_state.dart';
+import 'package:kapda/size_config.dart';
+import '../../components/bottomnavBar.dart';
 import 'Body.dart';
 
 class Profile extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kapda/services/auth_provider.dart';
-import 'package:kapda/sizeConfig.dart';
+import 'package:kapda/size_config.dart';
 import 'package:provider/provider.dart';
 import '../Screens/CreateProfilePage/create_profile_page.dart';
 import '../constants.dart';

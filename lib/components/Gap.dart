@@ -1,4 +1,4 @@
-import 'package:kapda/sizeConfig.dart';
+import 'package:kapda/size_config.dart';
 
 import 'package:flutter/material.dart';
 

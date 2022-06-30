@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:kapda/sizeConfig.dart';
+import 'package:kapda/size_config.dart';
 import 'package:provider/provider.dart';
 import '../../../services/cart_products.dart';
 import 'checkoutbar.dart';

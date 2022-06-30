@@ -21,5 +21,5 @@ Map<String, WidgetBuilder> routes = {
   CartScreen.routeName: (context) => CartScreen(),
   Profile.routeName: (context) => Profile(),
   CreateProfilePage.routeName: (context) => CreateProfilePage(),
-  ProductsScreen.routeName : (_)=> ProductsScreen(),
+  ProductsScreen.routeName : (_)=> const ProductsScreen(),
 };
