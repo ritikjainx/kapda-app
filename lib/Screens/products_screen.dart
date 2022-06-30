@@ -20,7 +20,7 @@ class ProductsScreen extends StatelessWidget {
     final arguments = ModalRoute.of(context).settings.arguments;
     return Scaffold(
         bottomNavigationBar: const BottomNavBar(
-          selected: MenuState.favourite,
+          // selected: MenuState.favourite,
         ),
         appBar: AppBar(
           title: const Text(
@@ -89,7 +89,7 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
-    print("rebuilding products screen");
+    // print("rebuilding products screen");
     initData();
     if (filteredProducts.isEmpty) {
       return const Center(

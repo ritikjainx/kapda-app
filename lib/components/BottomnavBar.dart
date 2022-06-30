@@ -45,7 +45,8 @@ class BottomNavBar extends StatelessWidget {
                   color: selected == MenuState.favourite ? kPrimaryColor : kTextColor.withOpacity(0.6),
                 ),
                 onPressed: () {
-                  if (ModalRoute.of(context).settings.name != ProductsScreen.routeName) {
+                  if (ModalRoute.of(context).settings.name != ProductsScreen.routeName ||
+                      ModalRoute.of(context).canPop) {
                     Navigator.pushNamedAndRemoveUntil(context, ProductsScreen.routeName, (route) => false);
                   }
                 }),
