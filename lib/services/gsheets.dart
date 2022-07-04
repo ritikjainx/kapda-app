@@ -1,17 +1,17 @@
+import 'package:flutter/services.dart';
 import 'package:gsheets/gsheets.dart';
 
 class GSheetsApi {
   static const _spreadsheetid = '1ZsD-OH9MzsiPjHJlczBYb0Gsrv7nEZGOztg0WFKW2R4';
-  // TODO: add GCP service account json credentials here
-  static const _cred = r'''
 
-''';
-
-  static final _gsheets = GSheets(_cred);
+  static var _gsheets;
   static Worksheet _userSheet;
   static Spreadsheet _spreadsheet;
 
   static Future init() async {
+    // TODO: add your own cred.json file
+    String cred = await rootBundle.loadString('assets/cred.json');
+    _gsheets = GSheets(cred);
     _spreadsheet = await _gsheets.spreadsheet(_spreadsheetid);
     print(_spreadsheet);
   }

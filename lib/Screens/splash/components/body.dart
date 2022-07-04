@@ -8,6 +8,8 @@ import 'package:kapda/constants.dart';
 int currentPage = 0;
 
 class Body extends StatefulWidget {
+  const Body({Key key}) : super(key: key);
+
   @override
   _BodyState createState() => _BodyState();
 }
@@ -80,7 +82,7 @@ class _BodyState extends State<Body> {
 
 class Dot extends StatelessWidget {
   final int index;
-  const Dot({this.index});
+   const Dot({Key key, this.index}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
