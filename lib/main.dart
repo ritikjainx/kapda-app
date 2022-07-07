@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ProductsService()),
       ],
       builder: (context, child) {
-        log('master init');
+        // log('master init');
         bool toRemember = UserSharedPrefs.getToRemember();
 
         return MaterialApp(

@@ -25,13 +25,18 @@ class ProductDescription extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                product.title,
-                style: TextStyle(fontSize: getProportionateScreenHeight(20), fontWeight: FontWeight.w800),
+              Flexible(
+                flex: 2,
+                child: Text(
+                  product.title,
+                  style: TextStyle(fontSize: getProportionateScreenWidth(18), fontWeight: FontWeight.w800),
+                ),
               ),
-              Text(
-                '₹ ${product.price.toString()}',
-                style: TextStyle(fontSize: getProportionateScreenHeight(20), fontWeight: FontWeight.w800),
+              Flexible(
+                child: Text(
+                  '₹ ${product.price.toString()}',
+                  style: TextStyle(fontSize: getProportionateScreenWidth(18), fontWeight: FontWeight.w800),
+                ),
               ),
             ],
           ),
