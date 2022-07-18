@@ -12,10 +12,15 @@ An E-commerce clothing store app connected to Google sheets as backend for stori
 
 ## Features and some screens 
 
+<img src="https://github.com/Noob-2-pro/kapda-app/blob/main/app_screenshots/login_screen.png" width="350">         <img src="https://github.com/Noob-2-pro/kapda-app/blob/main/app_screenshots/otp_with_error.png" width="350">
+
+
 1) Phone Authentication :
 - login and signup through OTP,
 - save user logged in state, show home screen and skip login if user wants to,
 - user details are stored in Google sheets, when signed up first time.
+
+<img src="https://github.com/Noob-2-pro/kapda-app/blob/main/app_screenshots/login_screen.png" width="350">         <img src="https://github.com/Noob-2-pro/kapda-app/blob/main/app_screenshots/product_description.png" width="350">
 
 2)Products and Homescreen
 - products could be added through google sheets easily and will reflect on the app,
@@ -23,6 +28,8 @@ An E-commerce clothing store app connected to Google sheets as backend for stori
 - number of products added in cart  show on homescreen.
 - choose male female catagory.
 - product description page
+
+<img src="https://github.com/Noob-2-pro/kapda-app/blob/main/app_screenshots/cart.png" width="350">
 
 3) Products Cart
 - Added products show in cart with price ,quantity and size selected.
@@ -34,8 +41,7 @@ An E-commerce clothing store app connected to Google sheets as backend for stori
 
 - setup firebase project and SHA-1 keys for phone auth.
 - add Json key in GSheetsAPI class inside services/gsheets.dart to setup googlesheets or move them to an .env file.
-- Favourite list could be made user specific.
-- Loading indicator could be added while future completes
+- Loading indicator could be added while API calls are made.
 - Gsheets could be checked to contain the defined spreadsheet and worksheets for null.
 - App could be migrated to null safety (although you will need patience while doing this)
 
