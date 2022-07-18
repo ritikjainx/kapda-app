@@ -6,8 +6,6 @@ import 'package:kapda/constants.dart';
 import 'package:kapda/services/auth_provider.dart';
 import 'package:kapda/size_config.dart';
 import 'package:provider/provider.dart';
-
-import '../../services/product_service.dart';
 import '../HomeScreen/homeScreen.dart';
 
 class Body extends StatefulWidget {
@@ -97,14 +95,11 @@ class _BodyState extends State<Body> {
                   try {
                     bool exist = await authProvider.checkUser();
                     final credential = PhoneAuthProvider.credential(verificationId: verificationId, smsCode: otpValue);
-                    final auth = await FirebaseAuth.instance.signInWithCredential(credential);
-                    print(auth.user.uid);
+                    await FirebaseAuth.instance.signInWithCredential(credential);
                     if (!exist) {
                       await authProvider.saveUserToDataBase();
                     }
                     authProvider.updateErrorText("");
-                    await Provider.of<ProductsService>(context, listen: false).getallProducts();
-
                     Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
                   } catch (e) {
                     authProvider.updateErrorText(e.toString());

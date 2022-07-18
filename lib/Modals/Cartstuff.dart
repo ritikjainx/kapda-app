@@ -8,11 +8,12 @@ class CartStuff {
   final int id;
   final String size;
 
-  CartStuff({this.id, this.quantity, this.image, this.title, this.price,this.size});
+  CartStuff({this.id, this.quantity, this.image, this.title, this.price, this.size});
 
-     @override
+  @override
   bool operator ==(Object other) =>
-      identical(this, other) || other is CartStuff && runtimeType == other.runtimeType && id == other.id && size == other.size;
+      identical(this, other) ||
+      other is CartStuff && runtimeType == other.runtimeType && id == other.id && size == other.size;
 
   @override
   int get hashCode => id.hashCode ^ size.hashCode;

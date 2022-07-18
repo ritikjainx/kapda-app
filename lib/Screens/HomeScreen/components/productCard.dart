@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:kapda/Modals/Product.dart';
 import 'package:kapda/services/product_service.dart';
 import 'package:provider/provider.dart';
 import '../../../constants.dart';
+import '../../../modals/ApiModels/product_modal.dart';
+import '../../../services/auth_provider.dart';
 import '../../../size_config.dart';
 
 class ProductCard extends StatefulWidget {
@@ -57,16 +58,8 @@ class _ProductCardState extends State<ProductCard> {
                   ),
                   InkWell(
                     onTap: () {
-                      // setState(() {
-                      //   widget.demoProduct.isFavourite = !widget.demoProduct.isFavourite;
-                      // });
                       Product p = widget.demoProduct;
-                      Provider.of<ProductsService>(context, listen: false).toggleFavStatus(id: p.id);
-                      Provider.of<ProductsService>(context, listen: false).updateProductKey(
-                        id: p.id.toString(),
-                        key: 'isFav',
-                        value: p.isFavourite.toString(),
-                      );
+                      Provider.of<ProductsService>(context, listen: false).toggleFavStatus(id: p.id, context: context);
                     },
                     child: Container(
                         padding: const EdgeInsets.all(8),
@@ -77,7 +70,9 @@ class _ProductCardState extends State<ProductCard> {
                         child: Icon(
                           Icons.favorite,
                           size: getProportionateScreenHeight(15),
-                          color: widget.demoProduct.isFavourite ? const Color(0xffff4848) : const Color(0xffdedbe4),
+                          color: Provider.of<AuthProvider>(context).user.favItems.contains(widget.demoProduct.id)
+                              ? const Color(0xffff4848)
+                              : const Color(0xffdedbe4),
                         )),
                   )
                 ],

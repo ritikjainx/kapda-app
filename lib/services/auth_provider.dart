@@ -1,7 +1,7 @@
 import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:kapda/Modals/ApiModels/user_modal.dart' as usermodal;
+import 'package:kapda/modals/ApiModels/user_modal.dart';
 import '../Screens/OTP_Screen/OTPScreen.dart';
 import 'gsheets.dart';
 
@@ -10,7 +10,7 @@ class AuthProvider extends ChangeNotifier {
   String errorText = '';
   String verificationid = '';
   final _auth = FirebaseAuth.instance;
-  usermodal.User user;
+  UserData user;
 
   String get phoneNumber => _phoneNumber;
 
@@ -51,7 +51,6 @@ class AuthProvider extends ChangeNotifier {
 
   Future saveUserToDataBase() async {
     final userData = user.tojson();
-    print(userData);
     await GSheetsApi.insert(userData);
   }
 
@@ -62,6 +61,10 @@ class AuthProvider extends ChangeNotifier {
       notifyListeners();
     }
     return exist;
+  }
+
+  Future initUser({@required String id}) async {
+    user = await GSheetsApi.getUser(id);
   }
 
   updateErrorText(String eText) {

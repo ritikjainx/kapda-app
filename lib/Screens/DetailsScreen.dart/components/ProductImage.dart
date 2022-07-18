@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:kapda/Modals/Product.dart';
 
 import '../../../constants.dart';
+import '../../../modals/ApiModels/product_modal.dart';
 import '../../../size_config.dart';
 
 class ProductImage extends StatefulWidget {

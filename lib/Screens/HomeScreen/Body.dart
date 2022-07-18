@@ -1,10 +1,15 @@
+import 'dart:developer';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kapda/Screens/DetailsScreen.dart/Detailscreen.dart';
 import 'package:kapda/Screens/products_screen.dart';
 import 'package:kapda/components/Gap.dart';
+import 'package:kapda/services/gsheets.dart';
 import 'package:kapda/services/product_service.dart';
 import 'package:provider/provider.dart';
-import '../../Modals/Product.dart';
+import '../../modals/ApiModels/product_modal.dart';
+import '../../services/auth_provider.dart';
 import '../../size_config.dart';
 import 'components/DicountCard.dart';
 import 'components/SectionBreak.dart';
@@ -25,6 +30,8 @@ class _BodyState extends State<Body> {
   }
 
   initData() async {
+    final auth = FirebaseAuth.instance;
+    await Provider.of<AuthProvider>(context, listen: false).initUser(id: auth.currentUser.phoneNumber);
     await Provider.of<ProductsService>(context, listen: false).getallProducts();
   }
 

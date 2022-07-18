@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kapda/Modals/Product.dart';
 
+import '../../../modals/ApiModels/product_modal.dart';
 import '../../../size_config.dart';
 
 class ProductDescription extends StatelessWidget {

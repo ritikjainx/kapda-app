@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:kapda/Modals/ApiModels/user_modal.dart' as usermodal;
 import 'package:kapda/components/CustomsvgImage.dart';
 import 'package:kapda/components/DefaultButton.dart';
 import 'package:kapda/components/Gap.dart';
+import 'package:kapda/modals/ApiModels/user_modal.dart';
 import 'package:kapda/services/auth_provider.dart';
 import 'package:kapda/size_config.dart';
 import 'package:provider/provider.dart';
@@ -137,16 +137,15 @@ class _DetailsState extends State<Details> {
 
                 var uuid = const Uuid();
                 String uid = uuid.v4();
-                final user = usermodal.User(
-                  // id: FirebaseAuth.instance.currentUser.uid,
+                final user = UserData(
                   id: uid,
                   firstName: _firstNameEditingController.text,
                   lastName: _lastNameEditingController.text,
                   address: _addressEditingController.text,
                   phoneNumber: _phoneNumberEditingController.text,
+                  favItems: [],
                 );
                 Provider.of<AuthProvider>(context, listen: false).user = user;
-                print(Provider.of<AuthProvider>(context, listen: false).user.phoneNumber);
               }
             },
           ),

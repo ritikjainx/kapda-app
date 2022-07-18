@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:kapda/services/auth_provider.dart';
 import 'package:kapda/services/product_service.dart';
 import 'package:provider/provider.dart';
 import '../Constants.dart';
-import '../menu_state.dart';
-import '../Modals/Product.dart';
 import '../components/bottomnavBar.dart';
+import '../modals/ApiModels/product_modal.dart';
 import '../services/cart_products.dart';
 import 'CartScreen/CartScreen.dart';
 import 'DetailsScreen.dart/Detailscreen.dart';
@@ -20,8 +20,8 @@ class ProductsScreen extends StatelessWidget {
     final arguments = ModalRoute.of(context).settings.arguments;
     return Scaffold(
         bottomNavigationBar: const BottomNavBar(
-          // selected: MenuState.favourite,
-        ),
+            // selected: MenuState.favourite,
+            ),
         appBar: AppBar(
           title: const Text(
             "Kapda",
@@ -79,9 +79,12 @@ class _BodyState extends State<Body> {
   }
 
   initData() {
+    final user = Provider.of<AuthProvider>(context, listen: false).user;
     if (widget.products == null || widget.products.isEmpty) {
-      filteredProducts =
-          Provider.of<ProductsService>(context).products.where((element) => element.isFavourite == true).toList();
+      filteredProducts = Provider.of<ProductsService>(context)
+          .products
+          .where((element) => user.favItems.contains(element.id))
+          .toList();
     } else {
       filteredProducts = widget.products;
     }

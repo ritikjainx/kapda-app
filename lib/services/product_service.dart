@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
-import '../Modals/Product.dart';
+import 'package:provider/provider.dart';
+import '../modals/ApiModels/product_modal.dart';
+import 'auth_provider.dart';
 import 'gsheets.dart';
 
 class ProductsService extends ChangeNotifier {
@@ -12,16 +13,17 @@ class ProductsService extends ChangeNotifier {
     notifyListeners();
   }
 
-  updateProductKey({String id, String key, String value}) async {
-    await GSheetsApi.updateProductbyKey(id: id, key: key, value: value);
-  }
+  toggleFavStatus({int id, BuildContext context}) async {
+    final user = Provider.of<AuthProvider>(context, listen: false).user;
 
-  toggleFavStatus({int id}) {
-    int index = products.indexWhere((element) => element.id == id);
-    Product newProduct = products[index];
-    newProduct.isFavourite = !newProduct.isFavourite;
-    products[index] = newProduct;
-    print(products[index].isFavourite);
+    bool isThere = user.favItems.contains(id);
+    if (isThere) {
+      user.favItems.remove(id);
+    } else {
+      user.favItems.add(id);
+    }
+
+    await GSheetsApi.manageFavStatusInUserData(user: user);
     notifyListeners();
   }
 }

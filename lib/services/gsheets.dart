@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gsheets/gsheets.dart';
+import 'package:kapda/modals/ApiModels/user_modal.dart';
 
 class GSheetsApi {
   static const _spreadsheetid = '1ZsD-OH9MzsiPjHJlczBYb0Gsrv7nEZGOztg0WFKW2R4';
@@ -20,7 +22,6 @@ class GSheetsApi {
     try {
       return await spreadsheet.addWorksheet(title);
     } catch (e) {
-      print(e);
       return spreadsheet.worksheetByTitle(title);
     }
   }
@@ -35,21 +36,6 @@ class GSheetsApi {
     print('added');
   }
 
-  static Future getAllProducts() async {
-    _userSheet = _spreadsheet.worksheetByTitle("Products");
-    if (_userSheet == null) {
-      print('null');
-      return;
-    }
-    return await _userSheet.values.map.allRows();
-  }
-
-  static updateProductbyKey({String id, String key, String value}) {
-    _userSheet = _spreadsheet.worksheetByTitle("Products");
-
-    _userSheet.values.insertValueByKeys(value, columnKey: key, rowKey: id);
-  }
-
   static Future<bool> checkUser({String phoneNumber}) async {
     _userSheet = _spreadsheet.worksheetByTitle("Users");
     List<String> users = await _userSheet.values.columnByKey("phoneNumber", fromRow: 2);
@@ -59,4 +45,32 @@ class GSheetsApi {
       return false;
     }
   }
+
+  static Future<UserData> getUser(String phoneNumber) async {
+    _userSheet = _spreadsheet.worksheetByTitle("Users");
+    if (_userSheet == null) {
+      return null;
+    }
+
+    var users = await _userSheet.values.columnByKey("phoneNumber");
+    int index = users.indexOf(phoneNumber.substring(3));
+    final json = await _userSheet.values.row(index + 2);
+    final user = UserData.fromList(json);
+    return user;
+  }
+
+  static Future getAllProducts() async {
+    _userSheet = _spreadsheet.worksheetByTitle("Products");
+    if (_userSheet == null) {
+      print('null');
+      return;
+    }
+    return await _userSheet.values.map.allRows();
+  }
+
+  static manageFavStatusInUserData({@required UserData user}) {
+    _userSheet = _spreadsheet.worksheetByTitle("Users");
+    _userSheet.values.insertValueByKeys(user.favItems.toString(), columnKey: 'favItems', rowKey: user.id);
+  }
+
 }
