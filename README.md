@@ -12,7 +12,7 @@ An E-commerce clothing store app connected to Google sheets as backend for stori
 
 ## Features and some screens 
 
-<img src="https://github.com/Noob-2-pro/kapda-app/blob/main/app_screenshots/login_screen.png" width="350">         <img src="https://github.com/Noob-2-pro/kapda-app/blob/main/app_screenshots/otp_with_error.png" width="350">
+<img src="https://github.com/Noob-2-pro/kapda-app/blob/main/app_screenshots/login_screen.png" width="350">   <img src="https://github.com/Noob-2-pro/kapda-app/blob/main/app_screenshots/otp_with_error.png" width="350">
 
 
 1) Phone Authentication :
@@ -20,7 +20,7 @@ An E-commerce clothing store app connected to Google sheets as backend for stori
 - save user logged in state, show home screen and skip login if user wants to,
 - user details are stored in Google sheets, when signed up first time.
 
-<img src="https://github.com/Noob-2-pro/kapda-app/blob/main/app_screenshots/login_screen.png" width="350">         <img src="https://github.com/Noob-2-pro/kapda-app/blob/main/app_screenshots/product_description.png" width="350">
+<img src="https://github.com/Noob-2-pro/kapda-app/blob/main/app_screenshots/home.png" width="350">    <img src="https://github.com/Noob-2-pro/kapda-app/blob/main/app_screenshots/product_description.png" width="350">
 
 2)Products and Homescreen
 - products could be added through google sheets easily and will reflect on the app,
