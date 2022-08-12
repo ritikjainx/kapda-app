@@ -36,6 +36,7 @@ An E-commerce clothing store app connected to Google sheets as backend for stori
 - dismissible list to remove products from cart
 - total price which is forwared to payment dialog when checkout.
 
+(Note : I wouldn't recommed to follow this app's architcture as it is old and I follow a much better one using MVVM )
 
 ### Required updates if you want to use this code (priority wise)
 
